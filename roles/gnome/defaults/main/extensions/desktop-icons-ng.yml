@@ -1,0 +1,22 @@
+---
+gse_desktop_icons_ng_enable: yes
+gse_desktop_icons_ng_set_arrangeorder: "'KIND'"
+gse_desktop_icons_ng_set_keep_arranged: 'true'
+gse_desktop_icons_ng_set_show_home: 'false'
+gse_desktop_icons_ng_set_show_trash: 'true'
+gse_desktop_icons_ng_set_sort_special_folders: 'true'
+gse_desktop_icons_ng_set_start_corner: "'top-right'"
+
+gse_desktop_icons_ng:
+  name: ding@rastersoft.com
+  id: 2087
+  namespace: /org/gnome/shell/extensions/ding
+  enable: "{{ gse_desktop_icons_ng_enable }}"
+  system: yes
+  settings:
+    arrangeorder: "{{ gse_desktop_icons_ng_set_arrangeorder }}"
+    keep-arranged: "{{ gse_desktop_icons_ng_set_keep_arranged }}"
+    show-home: "{{ gse_desktop_icons_ng_set_show_home }}"
+    show-trash: "{{ gse_desktop_icons_ng_set_show_trash }}"
+    sort-special-folders: "{{ gse_desktop_icons_ng_set_sort_special_folders }}"
+    start-corner: "{{ gse_desktop_icons_ng_set_start_corner }}"

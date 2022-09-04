@@ -1,0 +1,27 @@
+---
+- name: Install i8kutils
+  become: yes
+  ansible.builtin.apt: pkg=i8kutils state=present cache_valid_time=3600
+
+- name: enable i8kmon
+  become: yes
+  ansible.builtin.systemd:
+    name: i8kmon
+    enabled: yes
+
+- name: Configure i8kmon
+  become: yes
+  ansible.builtin.copy:
+    src: i8kmon.conf
+    dest: /etc/i8kmon.conf
+    mode: 0644
+  notify: restart i8kmon
+
+- name: Install dell-bios-fan-control
+  become: true
+  community.general.snap: name=dell-bios-fan-control state=present
+
+- name: Set dell bios fan control
+  become: yes
+  ansible.builtin.shell: "dell-bios-fan-control '{{ dell_bios_fan_control }}'"
+  changed_when: false

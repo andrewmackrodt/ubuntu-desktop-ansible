@@ -1,0 +1,17 @@
+---
+gse_sound_device_chooser_enable: yes
+gse_sound_device_chooser_set_expand_volume_menu: 'false'
+gse_sound_device_chooser_set_hide_on_single_device: 'true'
+gse_sound_device_chooser_set_integrate_with_slider: 'true'
+gse_sound_device_chooser_set_show_profiles: 'false'
+
+gse_sound_device_chooser:
+  name: sound-output-device-chooser@kgshank.net
+  id: 906
+  namespace: /org/gnome/shell/extensions/sound-output-device-chooser
+  enable: "{{ gse_sound_device_chooser_enable }}"
+  settings:
+    expand-volume-menu: "{{ gse_sound_device_chooser_set_expand_volume_menu }}"
+    hide-on-single-device: "{{ gse_sound_device_chooser_set_hide_on_single_device }}"
+    integrate-with-slider: "{{ gse_sound_device_chooser_set_integrate_with_slider }}"
+    show-profiles: "{{ gse_sound_device_chooser_set_show_profiles }}"

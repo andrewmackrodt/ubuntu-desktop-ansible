@@ -1,0 +1,26 @@
+---
+gnome_terminal_default_profile_id: ':b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
+gnome_terminal_default_profile_background_color: "'rgb(23,20,33)'"
+gnome_terminal_default_profile_cursor_shape: "'ibeam'"
+gnome_terminal_default_profile_default_size_columns: '100'
+gnome_terminal_default_profile_default_size_rows: '30'
+gnome_terminal_default_profile_foreground_color: "'rgb(208,207,204)'"
+gnome_terminal_default_profile_use_theme_colors: 'false'
+gnome_terminal_default_profile_visible_name: "'Default'"
+gnome_terminal_legacy_menu_accelerator_enabled: 'false'
+
+gnome_terminal_defaults:
+  default_profile:
+    namespace: "/org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_default_profile_id }}"
+    settings:
+      background-color: "{{ gnome_terminal_default_profile_background_color }}"
+      cursor-shape: "{{ gnome_terminal_default_profile_cursor_shape }}"
+      default-size-columns: "{{ gnome_terminal_default_profile_default_size_columns }}"
+      default-size-rows: "{{ gnome_terminal_default_profile_default_size_rows }}"
+      foreground-color: "{{ gnome_terminal_default_profile_foreground_color }}"
+      use-theme-colors: "{{ gnome_terminal_default_profile_use_theme_colors }}"
+      visible-name: "{{ gnome_terminal_default_profile_visible_name }}"
+  legacy:
+    namespace: /org/gnome/terminal/legacy
+    settings:
+      menu-accelerator-enabled: "{{ gnome_terminal_legacy_menu_accelerator_enabled }}"

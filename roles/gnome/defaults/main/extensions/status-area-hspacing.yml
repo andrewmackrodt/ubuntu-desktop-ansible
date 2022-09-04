@@ -1,0 +1,11 @@
+---
+gse_status_area_hspacing_enable: yes
+gse_status_area_hspacing_set_hpadding: '7'
+
+gse_status_area_hspacing:
+  name: status-area-horizontal-spacing@mathematical.coffee.gmail.com
+  id: 355
+  namespace: /org/gnome/shell/extensions/status-area-horizontal-spacing
+  enable: "{{ gse_status_area_hspacing_enable }}"
+  settings:
+    hpadding: "{{ gse_status_area_hspacing_set_hpadding }}"

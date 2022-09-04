@@ -1,0 +1,22 @@
+---
+- ansible.builtin.include_role: name=apt-key
+  vars:
+    source: "deb http://repository.spotify.com stable non-free"
+    name: "{{ spotify_apt_name }}"
+    keyname: "{{ spotify_apt_key_name }}"
+    url: "{{ spotify_apt_key_url }}"
+    dearmor: "{{ spotify_apt_key_dearmor }}"
+
+- name: Install spotify
+  become: yes
+  ansible.builtin.apt: pkg="{{ spotify_apt_pkg }}" state=present cache_valid_time=3600
+
+- name: Set spotify scale factor
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/spotify.desktop
+    regexp: '^Exec='
+    line: "Exec=spotify{% if spotify_scale_factor > 1.0 %} --force-device-scale-factor={{ spotify_scale_factor }}{% endif %} %U"
+
+- name: Update dock pinned apps
+  ansible.builtin.include_role: name=pin-to-dock

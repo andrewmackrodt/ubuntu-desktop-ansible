@@ -1,0 +1,9 @@
+roles/petermosmans.customize-gnome/
+__pycache__/
+.idea/
+.vagrant/
+.vscode/
+*~
+.DS_Store
+.env
+

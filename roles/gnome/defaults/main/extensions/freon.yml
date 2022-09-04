@@ -1,0 +1,8 @@
+---
+gse_freon_enable: yes
+
+gse_freon:
+  name: freon@UshakovVasilii_Github.yahoo.com
+  id: 841
+  namespace: /org/gnome/shell/extensions/freon
+  enable: "{{ gse_freon_enable }}"

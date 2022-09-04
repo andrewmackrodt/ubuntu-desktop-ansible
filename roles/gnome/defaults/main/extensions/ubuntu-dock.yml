@@ -1,0 +1,8 @@
+---
+gse_ubuntu_dock_enable: no
+
+gse_ubuntu_dock:
+  name: ubuntu-dock@ubuntu.com
+  id: 1300
+  enable: "{{ gse_ubuntu_dock_enable }}"
+  system: yes

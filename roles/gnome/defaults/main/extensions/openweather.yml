@@ -1,0 +1,25 @@
+---
+gse_openweather_enable: yes
+gse_openweather_set_city: "'40.712775,-74.005973>New York City, United States>-1'"
+gse_openweather_set_decimal_places: '0'
+gse_openweather_set_location_text_length: '60'
+gse_openweather_set_position_index: '1'
+gse_openweather_set_translate_condition: 'false'
+gse_openweather_set_use_system_icons: 'false'
+gse_openweather_set_wind_direction: 'true'
+gse_openweather_set_wind_speed_unit: "'mph'"
+
+gse_openweather:
+  name: openweather-extension@jenslody.de
+  id: 750
+  namespace: /org/gnome/shell/extensions/openweather
+  enable: "{{ gse_openweather_enable }}"
+  settings:
+    city: "{{ gse_openweather_set_city }}"
+    decimal-places: "{{ gse_openweather_set_decimal_places }}"
+    location-text-length: "{{ gse_openweather_set_location_text_length }}"
+    position-index: "{{ gse_openweather_set_position_index }}"
+    translate-condition: "{{ gse_openweather_set_translate_condition }}"
+    use-system-icons: "{{ gse_openweather_set_use_system_icons }}"
+    wind-direction: "{{ gse_openweather_set_wind_direction }}"
+    wind-speed-unit: "{{ gse_openweather_set_wind_speed_unit }}"

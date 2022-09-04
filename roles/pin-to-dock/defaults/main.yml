@@ -1,0 +1,10 @@
+---
+pin_to_dock:
+  - { name: 'org.gnome.Nautilus.desktop' }
+  - { name: 'firefox.desktop' }
+  - { name: 'org.gnome.Terminal.desktop' }
+  - { name: 'org.gnome.gedit.desktop' }
+  - { name: 'rhythmbox.desktop' }
+  - { name: 'org.gnome.Totem.desktop' }
+  - { name: 'gnome-control-center.desktop' }
+  - { name: 'gnome-system-monitor.desktop' }

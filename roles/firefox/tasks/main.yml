@@ -1,0 +1,8 @@
+---
+- name: Install firefox
+  become: true
+  community.general.snap: name=firefox state=present
+
+- name: Update dock pinned apps
+  ansible.builtin.include_role: name=pin-to-dock
+

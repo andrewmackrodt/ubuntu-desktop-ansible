@@ -1,0 +1,6 @@
+---
+- name: restart i8kmon
+  become: yes
+  ansible.builtin.systemd:
+    name: i8kmon
+    state: restarted

@@ -1,0 +1,47 @@
+---
+gse_dash_to_dock_enable: yes
+gse_dash_to_dock_set_animate_show_apps: 'true'
+gse_dash_to_dock_set_apply_custom_theme: 'false'
+gse_dash_to_dock_set_background_opacity: '0.80000000000000004'
+gse_dash_to_dock_set_click_action: "'minimize-or-previews'"
+gse_dash_to_dock_set_custom_theme_shrink: 'true'
+gse_dash_to_dock_set_dash_max_icon_size: '48'
+gse_dash_to_dock_set_disable_overview_on_startup: 'true'
+gse_dash_to_dock_set_dock_fixed: 'true'
+gse_dash_to_dock_set_dock_position: "'LEFT'"
+gse_dash_to_dock_set_extend_height: 'true'
+gse_dash_to_dock_set_height_fraction: '0.90000000000000002'
+gse_dash_to_dock_set_middle_click_action: "'launch'"
+gse_dash_to_dock_set_multi_monitor: 'true'
+gse_dash_to_dock_set_running_indicator_style: "'DOTS'"
+gse_dash_to_dock_set_scroll_action: "'cycle-windows'"
+gse_dash_to_dock_set_shift_click_action: "'previews'"
+gse_dash_to_dock_set_shift_middle_click_action: "'quit'"
+gse_dash_to_dock_set_show_trash: 'false'
+gse_dash_to_dock_set_transparency_mode: "'FIXED'"
+
+gse_dash_to_dock:
+  name: dash_to_dock@micxgx.gmail.com
+  id: 307
+  namespace: /org/gnome/shell/extensions/dash-to-dock
+  enable: "{{ gse_dash_to_dock_enable }}"
+  settings:
+    animate-show-apps: "{{ gse_dash_to_dock_set_animate_show_apps }}"
+    apply-custom-theme: "{{ gse_dash_to_dock_set_apply_custom_theme }}"
+    background-opacity: "{{ gse_dash_to_dock_set_background_opacity }}"
+    click-action: "{{ gse_dash_to_dock_set_click_action }}"
+    custom-theme-shrink: "{{ gse_dash_to_dock_set_custom_theme_shrink }}"
+    dash-max-icon-size: "{{ gse_dash_to_dock_set_dash_max_icon_size }}"
+    disable-overview-on-startup: "{{ gse_dash_to_dock_set_disable_overview_on_startup }}"
+    dock-fixed: "{{ gse_dash_to_dock_set_dock_fixed }}"
+    dock-position: "{{ gse_dash_to_dock_set_dock_position }}"
+    extend-height: "{{ gse_dash_to_dock_set_extend_height }}"
+    height-fraction: "{{ gse_dash_to_dock_set_height_fraction }}"
+    middle-click-action: "{{ gse_dash_to_dock_set_middle_click_action }}"
+    multi-monitor: "{{ gse_dash_to_dock_set_multi_monitor }}"
+    running-indicator-style: "{{ gse_dash_to_dock_set_running_indicator_style }}"
+    scroll-action: "{{ gse_dash_to_dock_set_scroll_action }}"
+    shift-click-action: "{{ gse_dash_to_dock_set_shift_click_action }}"
+    shift-middle-click-action: "{{ gse_dash_to_dock_set_shift_middle_click_action }}"
+    show-trash: "{{ gse_dash_to_dock_set_show_trash }}"
+    transparency-mode: "{{ gse_dash_to_dock_set_transparency_mode }}"

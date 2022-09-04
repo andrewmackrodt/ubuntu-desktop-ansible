@@ -1,0 +1,8 @@
+---
+gse_dash_to_panel_enable: no
+
+gse_dash_to_panel:
+  name: dash-to-panel@jderose9.github.com
+  id: 1160
+  namespace: /org/gnome/shell/extensions/dash-to-panel
+  enable: "{{ gse_dash_to_panel_enable }}"

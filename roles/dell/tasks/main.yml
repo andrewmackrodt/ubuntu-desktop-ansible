@@ -1,0 +1,8 @@
+---
+- name: Set system vendor fact
+  ansible.builtin.set_fact:
+    sys_vendor: "{{ lookup('file', '/sys/devices/virtual/dmi/id/sys_vendor') }}"
+
+- name: Execute tasks for Dell devices
+  ansible.builtin.include_tasks: oem.yml
+  when: sys_vendor is search("Dell")

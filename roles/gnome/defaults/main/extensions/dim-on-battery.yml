@@ -1,0 +1,15 @@
+---
+gse_dim_on_battery_enable: yes
+gse_dim_on_battery_set_ac_brightness: '70.0'
+gse_dim_on_battery_set_battery_brightness: '30.0'
+gse_dim_on_battery_set_legacy_mode: 'true'
+
+gse_dim_on_battery:
+  name: dim-on-battery@nailfarmer.nailfarmer.com
+  id: 947
+  namespace: /org/gnome/shell/extensions/dim-on-battery
+  enable: "{{ gse_dim_on_battery_enable }}"
+  settings:
+    ac-brightness: "{{ gse_dim_on_battery_set_ac_brightness }}"
+    battery-brightness: "{{ gse_dim_on_battery_set_battery_brightness }}"
+    legacy-mode: "{{ gse_dim_on_battery_set_legacy_mode }}"

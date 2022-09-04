@@ -1,0 +1,13 @@
+---
+gse_just_perfection_enable: yes
+gse_just_perfection_set_startup_status: '0'
+gse_just_perfection_set_window_demands_attention_focus: 'true'
+
+gse_just_perfection:
+  name: just-perfection-desktop@just-perfection
+  id: 3843
+  namespace: /org/gnome/shell/extensions/just-perfection
+  enable: "{{ gse_just_perfection_enable }}"
+  settings:
+    startup-status: "{{ gse_just_perfection_set_startup_status }}"
+    window-demands-attention-focus: "{{ gse_just_perfection_set_window_demands_attention_focus }}"

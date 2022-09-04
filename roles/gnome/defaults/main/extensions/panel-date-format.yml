@@ -1,0 +1,11 @@
+---
+gse_panel_date_format_enable: yes
+gse_panel_date_format_set_format: "'%a, %d %b %R %p'"
+
+gse_panel_date_format:
+  name: panel-date-format@atareao.es
+  id: 3465
+  namespace: /org/gnome/shell/extensions/panel-date-format
+  enable: "{{ gse_panel_date_format_enable }}"
+  settings:
+    format: "{{ gse_panel_date_format_set_format }}"

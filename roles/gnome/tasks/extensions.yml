@@ -1,0 +1,48 @@
+---
+- name: Install gnome shell extension manager
+  become: yes
+  ansible.builtin.apt: pkg=gnome-shell-extension-manager state=present cache_valid_time=3600
+
+- name: Map gnome_extensions to include name
+  ansible.builtin.set_fact:
+    gnome_extensions_items: |
+      {{ gnome_extensions_items | default([]) + [item.value | combine({ 
+        'name': item.key,
+        'enable': item.value.enable | default(True),
+        'settings': item.value.settings | default({}) | dict2items,
+        'system': item.value.system | default(False),
+      })] }}
+  with_items: "{{ gnome_extensions_defaults | combine(gnome_extensions | default({}), recursive=true) | dict2items }}"
+
+- name: Determine not installed extensions
+  check_mode: no
+  ansible.builtin.shell: gnome-extensions info "{{ item.name }}"
+  with_items: "{{ gnome_extensions_items }}"
+  when: not item.system
+  notify:
+    - reload gnome-shell
+  register: ext_info
+  failed_when: ext_info.rc == 127
+  changed_when: ext_info.rc != 0
+
+- name: Install extensions
+  ansible.builtin.include_role: name=petermosmans.customize-gnome
+  vars:
+    gnome_extensions: "{{ ext_info.results
+        | selectattr('changed', 'equalto', true)
+        | map(attribute='item')
+        | mapattributes(['name', 'id', 'enable']) }}"
+  when: not ansible_check_mode and (ext_info.results | selectattr('changed', 'equalto', true) | length > 0)
+
+- ansible.builtin.meta: flush_handlers
+
+- name: Configure extensions
+  ansible.builtin.include_tasks: configure-extension.yml
+  vars:
+    namespace: "{{ outer_item.namespace }}"
+    name: "{{ outer_item.name }}"
+    enable: "{{ outer_item.enable }}"
+    settings: "{{ outer_item.settings }}"
+  loop_control:
+    loop_var: outer_item
+  with_items: "{{ gnome_extensions_items }}"

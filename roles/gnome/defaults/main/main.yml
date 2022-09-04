@@ -1,0 +1,27 @@
+---
+gnome_input_source: 'us'
+
+gnome_background_defaults:
+  color-shading-type: "'solid'"
+  picture-options: "'zoom'"
+  picture-uri: "'file:///usr/share/backgrounds/warty-final-ubuntu.png'"
+  picture-uri-dark: "'file:///usr/share/backgrounds/warty-final-ubuntu.png'"
+  primary-color: "'#2c001e'"
+  secondary-color: "'#2c001e'"
+
+gnome_icon_theme: "'Papirus'"
+
+gnome_extensions_defaults:
+  dash-to-dock@micxgx.gmail.com: "{{ gse_dash_to_dock }}"
+  dash-to-panel@jderose9.github.com: "{{ gse_dash_to_panel }}"
+  dim-on-battery@nailfarmer.nailfarmer.com: "{{ gse_dim_on_battery }}"
+  ding@rastersoft.com: "{{ gse_desktop_icons_ng }}"
+  easy_docker_containers@red.software.systems: "{{ gse_easy_docker_containers }}"
+  freon@UshakovVasilii_Github.yahoo.com: "{{ gse_freon }}"
+  just-perfection-desktop@just-perfection: "{{ gse_just_perfection }}"
+  KeepAwake@jepfa.de: "{{ gse_keep_awake }}"
+  openweather-extension@jenslody.de: "{{ gse_openweather }}"
+  panel-date-format@atareao.es: "{{ gse_panel_date_format }}"
+  sound-output-device-chooser@kgshank.net: "{{ gse_sound_device_chooser }}"
+  status-area-horizontal-spacing@mathematical.coffee.gmail.com: "{{ gse_status_area_hspacing }}"
+  ubuntu-dock@ubuntu.com: "{{ gse_ubuntu_dock }}"

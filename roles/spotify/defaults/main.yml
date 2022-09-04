@@ -1,0 +1,7 @@
+---
+spotify_apt_key_url: https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg
+spotify_apt_key_dearmor: yes
+spotify_apt_key_name: spotify.gpg
+spotify_apt_name: spotify
+spotify_apt_pkg: spotify-client
+spotify_scale_factor: 1.0

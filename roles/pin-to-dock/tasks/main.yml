@@ -1,0 +1,25 @@
+---
+- name: Detect .desktop files
+  check_mode: no
+  ansible.builtin.shell: |-
+    find /usr/share/applications /var/lib/snapd/desktop/applications "$HOME/.local/share/applications" -xtype f -name '*.desktop' 2>/dev/null \
+      | sed -E 's#.+/##' \
+      | sort -V \
+      | uniq
+  register: desktop_files
+  changed_when: false
+
+- name: Pin apps to dock
+  check_mode: no
+  args: { executable: /bin/bash }
+  ansible.builtin.shell: |-
+    set -e
+    key="/org/gnome/shell/favorite-apps"
+    current=$(dconf read "$key")
+    expected="{{ pin_to_dock | resolve_desktop_files(desktop_files.stdout_lines) }}"
+    [[ "$current" != "$expected" ]] || exit 0
+    echo "ansible_changed=yes"
+    [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
+    dconf write "$key" "$expected"
+  register: res
+  changed_when: res.stdout is search("ansible_changed=yes")

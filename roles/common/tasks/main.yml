@@ -1,0 +1,81 @@
+---
+- name: Install common packages
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      # common
+      - acl
+      - ca-certificates
+      - cron
+      - curl
+      - git
+      - locales
+      - nfs-common
+      - rsyslog
+      - software-properties-common
+      - sudo
+      - tzdata
+      - vim
+      - wget
+      # compression
+      - bzip2
+      - p7zip-full
+      - unrar
+      - unzip
+      - xz-utils
+      - zip
+      # administration
+      - htop
+      - iftop
+      - iotop
+      - net-tools
+      - strace
+      - traceroute
+      # security
+      - fail2ban
+      - ufw
+
+- name: Set timezone
+  check_mode: no
+  become: yes
+  args: { executable: /bin/bash }
+  ansible.builtin.shell: |-
+    set -e
+    tz=$(timedatectl show | awk -F= '$1 == "Timezone" { print $2 }')
+    [[ "$tz" != "{{ timezone }}" ]] || exit 0
+    echo "ansible_changed=yes"
+    [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
+    timedatectl set-timezone "{{ timezone }}"
+  register: set_timezone
+  changed_when: set_timezone.stdout is search("ansible_changed=yes")
+
+- name: Set local rtc
+  check_mode: no
+  become: yes
+  args: { executable: /bin/bash }
+  ansible.builtin.shell: |-
+    set -e
+    rtc=$(timedatectl show | awk -F= '$1 == "LocalRTC" { print $2 }' | sed s'/no/0/' | sed s'/yes/1/')
+    [[ "$rtc" != "{{ localrtc }}" ]] || exit 0
+    echo "ansible_changed=yes"
+    [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
+    timedatectl set-local-rtc {{ localrtc }} --adjust-system-clock
+  register: set_localrtc
+  changed_when: set_localrtc.stdout is search("ansible_changed=yes")
+
+- name: Set locale
+  check_mode: no
+  become: yes
+  args: { executable: /bin/bash }
+  ansible.builtin.shell: |-
+    set -e
+    locale=$(grep 'LANG=' /etc/default/locale | awk '{ print substr($0, 6) }' | tr -d '"')
+    [[ "$locale" != "{{ locale }}" ]] || exit 0
+    echo "ansible_changed=yes"
+    [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
+    locale-gen "{{ locale }}"
+    update-locale LANG="{{ locale }}" LANGUAGE="{{ locale | split('.') | first }}:{{ locale | split('_') | first }}"
+  register: set_locale
+  changed_when: set_locale.stdout is search("ansible_changed=yes")

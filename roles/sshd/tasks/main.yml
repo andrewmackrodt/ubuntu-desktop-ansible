@@ -1,0 +1,12 @@
+---
+- name: Install openssh-server
+  become: yes
+  ansible.builtin.apt: pkg=openssh-server state=present cache_valid_time=3600
+
+- name: Configure openssh-server
+  become: yes
+  ansible.builtin.copy:
+    src: security.conf
+    dest: /etc/ssh/sshd_config.d/security.conf
+    mode: 0644
+  notify: reload sshd

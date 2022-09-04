@@ -1,0 +1,14 @@
+---
+- name: Ubuntu Desktop
+  hosts: "{{ hosts | default('all') }}"
+  vars:
+    # see group_vars/all.yml
+  roles:
+    - { role: common }
+    - { role: sshd }
+    - { role: dell, tags: [dell, oem] }
+    - { role: gnome, tags: [gnome] }
+    - { role: firefox }
+    - { role: microsoft-edge }
+    - { role: vscode }
+    - { role: spotify }

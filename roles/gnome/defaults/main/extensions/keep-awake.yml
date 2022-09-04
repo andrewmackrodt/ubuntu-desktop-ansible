@@ -1,0 +1,8 @@
+---
+gse_keep_awake_enable: yes
+
+gse_keep_awake:
+  name: KeepAwake@jepfa.de
+  id: 1097
+  namespace: /org/gnome/shell/extensions/KeepAwake@jepfa.de
+  enable: "{{ gse_keep_awake_enable }}"

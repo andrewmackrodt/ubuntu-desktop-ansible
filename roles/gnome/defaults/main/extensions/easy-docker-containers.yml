@@ -1,0 +1,11 @@
+---
+gse_easy_docker_containers_enable: no
+gse_easy_docker_containers_set_refresh_delay: '2'
+
+gse_easy_docker_containers:
+  name: easy_docker_containers@red.software.systems
+  id: 2224
+  namespace: /red/software/systems/easy_docker_containers
+  enable: "{{ gse_easy_docker_containers_enable }}"
+  settings:
+    refresh-delay: "{{ gse_easy_docker_containers_set_refresh_delay }}"

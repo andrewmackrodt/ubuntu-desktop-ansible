@@ -1,0 +1,20 @@
+---
+gnome_interface_gtk_primary_paste: 'false'
+gnome_touchpad_click_method: "'fingers'"
+gnome_touchpad_disable_while_typing: 'false'
+gnome_mutter_center_new_windows: 'true'
+
+gnome_tweaks_defaults:
+  interface:
+    namespace: /org/gnome/desktop/interface
+    settings:
+      gtk-enable-primary-paste: "{{ gnome_interface_gtk_primary_paste }}"
+  touchpad:
+    namespace: /org/gnome/desktop/peripherals/touchpad
+    settings:
+      click-method: "{{ gnome_touchpad_click_method }}"
+      disable-while-typing: "{{ gnome_touchpad_disable_while_typing }}"
+  mutter:
+    namespace: /org/gnome/mutter
+    settings:
+      center-new-windows: "{{ gnome_mutter_center_new_windows }}"
