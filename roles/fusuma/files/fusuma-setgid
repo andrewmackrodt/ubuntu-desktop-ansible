@@ -1,0 +1,73 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ $(id -u) -ne 0 ]]; then
+  # get the graphical session type, e.g. x11
+  session_type=$(loginctl show-session $(loginctl | awk "\$2 == $(id -u) { print \$1 }") | awk -F= '$1 == "Type" { print $2 }')
+
+  # only launch fusuma if x11
+  if [[ "$session_type" != "x11" ]]; then
+    echo "INFO aborting session_type is not x11" >&2
+    exit 0
+  fi
+
+  # create passwordless sudo file if not exists
+  if [[ ! -f /etc/sudoers.d/fusuma-setgid ]]; then
+    echo "Creating passwordless sudo rule for $0"
+    echo "%adm ALL=(root) NOPASSWD:SETENV: $0" | sudo tee /etc/sudoers.d/fusuma-setgid >/dev/null
+  fi
+
+  # create a file for the privileged process to assert original user id in
+  # a semi trusted way using file uid and parent process id checks
+  FUSUMA_LOCK_FILE="/run/user/$(id -u)/fusuma.lock"
+  export FUSUMA_LOCK_FILE
+  echo "$$" >"$FUSUMA_LOCK_FILE"
+
+  # re-run script as root to be able to add input group to fusuma process
+  sudo -E "$0"
+  echo $?
+else
+  # abort if script called incorrectly
+  if [[ "${FUSUMA_LOCK_FILE:-}" == "" ]] || [[ ! -f "$FUSUMA_LOCK_FILE" ]]; then
+    echo "ERROR invalid usage or lock file not found" >&2
+    exit 1
+  fi
+
+  # assert lock file was created by parent process
+  ppid=${PPID:-0}
+  while [[ $ppid -ne 0 ]]; do
+    ppid=$(ps -o ppid= -p $ppid)
+    if [[ "$ppid" -eq "$(cat "$FUSUMA_LOCK_FILE")" ]]; then
+      break
+    fi
+  done
+  if [[ $ppid -eq 0 ]]; then
+    echo "ERROR lock file does not belong to process" >&2
+    exit 1
+  fi
+
+  # determine user to run fusuma as by getting uid of lock file
+  user_id=$(stat -c '%u' "$FUSUMA_LOCK_FILE")
+
+  # abort if lock file owned by root
+  if [[ $user_id -eq 0 ]]; then
+    echo "ERROR lock file is owned by root" >&2
+    exit 1
+  fi
+
+  # remove the lock file
+  rm "$FUSUMA_LOCK_FILE"
+
+  # get the username to run fusuma with
+  username=$(id -un $user_id)
+
+  # if which gosu >/dev/null; then
+  #   # use gosu if available in path
+  #   exec gosu "$username:input" /usr/local/bin/fusuma
+  # else
+  #   # fallback to su
+  #   exec su "$username" -g input -s /bin/sh -c 'exec /usr/local/bin/fusuma'
+  # fi
+
+  exec su "$username" -g input -s /bin/sh -c 'exec /usr/local/bin/fusuma'
+fi

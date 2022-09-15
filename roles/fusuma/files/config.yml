@@ -1,0 +1,21 @@
+swipe:
+  3:
+    up:
+      command: 'xdotool key super'
+    down:
+      command: 'xdotool key super+d'
+    left:
+      #command: wmctrl -s $(expr "$(wmctrl -d | awk '$2 == "*" { print $1 }')" + 1)
+      command: xdotool key ctrl+alt+Right
+    right:
+      #command: wmctrl -s $(expr "$(wmctrl -d | awk '$2 == "*" { print $1 }')" - 1)
+      command: xdotool key ctrl+alt+Left
+
+#pinch:
+#  in:
+#    command: 'xdotool key ctrl+plus'
+#  out:
+#     command: 'xdotool key ctrl+minus'
+
+threshold:
+  swipe: 0.5

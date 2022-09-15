@@ -8,7 +8,8 @@
     - { role: sshd }
     - { role: dell, tags: [dell, oem] }
     - { role: gnome, tags: [gnome] }
-    - { role: firefox }
-    - { role: microsoft-edge }
-    - { role: vscode }
-    - { role: spotify }
+    - { role: fusuma, tags: [fusuma] }
+    - { role: firefox, tags: [firefox] }
+    - { role: microsoft-edge, tags: [edge] }
+    - { role: vscode, tags: [code] }
+    - { role: spotify, tags: [spotify] }
