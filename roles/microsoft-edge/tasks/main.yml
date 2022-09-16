@@ -1,11 +1,15 @@
 ---
-- ansible.builtin.include_role: name=apt-key
+- ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
   vars:
     source: "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
     name: "{{ microsoft_edge_apt_name }}"
     keyname: "{{ microsoft_edge_apt_key_name }}"
     url: "{{ microsoft_edge_apt_key_url }}"
     dearmor: "{{ microsoft_edge_apt_key_dearmor }}"
+  tags:
+    - apt-key
 
 - name: Install microsoft edge
   become: yes

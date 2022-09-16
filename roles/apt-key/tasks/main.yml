@@ -35,7 +35,14 @@
   ansible.builtin.file: path="{{ apt_key_temp_key.path }}" state=absent
   changed_when: false
 
-- name: Add apt source {{ name }}
+- name: Create apt source {{ name }}
+  ansible.builtin.copy:
+    dest: "/etc/apt/sources.list.d/{{ name }}.list"
+    content: "{{ apt_key_source }}\n"
+    mode: 0644
+  become: yes
+
+- name: Update apt cache
   ansible.builtin.apt_repository:
     repo: "{{ apt_key_source }}"
     filename: "{{ name }}"

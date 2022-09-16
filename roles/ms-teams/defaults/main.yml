@@ -1,0 +1,6 @@
+---
+teams_apt_key_url: https://packages.microsoft.com/keys/microsoft.asc
+teams_apt_key_dearmor: yes
+teams_apt_key_name: microsoft.gpg
+teams_apt_name: teams
+teams_apt_pkg: teams

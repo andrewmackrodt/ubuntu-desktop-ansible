@@ -1,0 +1,6 @@
+---
+github_cli_apt_key_url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+github_cli_apt_key_dearmor: no
+github_cli_apt_key_name: githubcli-archive-keyring.gpg
+github_cli_apt_name: github-cli
+github_cli_apt_pkg: gh

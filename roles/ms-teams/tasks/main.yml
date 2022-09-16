@@ -1,0 +1,16 @@
+---
+- ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main"
+    name: "{{ teams_apt_name }}"
+    keyname: "{{ teams_apt_key_name }}"
+    url: "{{ teams_apt_key_url }}"
+    dearmor: "{{ teams_apt_key_dearmor }}"
+  tags:
+    - apt-key
+
+- name: Install ms-teams
+  become: yes
+  ansible.builtin.apt: pkg="{{ teams_apt_pkg }}" state=present cache_valid_time=3600
