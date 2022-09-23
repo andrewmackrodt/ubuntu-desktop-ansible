@@ -1,0 +1,24 @@
+---
+- name: "supergfxctl : git clone"
+  become: yes
+  ansible.builtin.git:
+    repo: "{{ asus_supergfxctl_repo }}"
+    dest: /usr/local/src/supergfxctl
+    version: "{{ asus_supergfxctl_version }}"
+    depth: 1
+
+- name: "supergfxctl : create make target"
+  become: yes
+  ansible.builtin.file:
+    path: /usr/local/src/supergfxctl/target
+    state: directory
+    owner: root
+    group: adm
+    mode: '2775'
+
+- name: "supergfxctl : make"
+  make: chdir="/usr/local/src/supergfxctl"
+
+- name: "supergfxctl : make install"
+  become: yes
+  make: chdir="/usr/local/src/supergfxctl" target=install

@@ -3,6 +3,6 @@
   ansible.builtin.set_fact:
     sys_vendor: "{{ lookup('file', '/sys/devices/virtual/dmi/id/sys_vendor') }}"
 
-- name: Execute tasks for Dell devices
+- name: Execute tasks for Asus devices
   ansible.builtin.include_tasks: oem.yml
-  when: sys_vendor is search("Dell") or dell_force_role_enabled
+  when: sys_vendor is search("Asus") or asus_force_role_enabled

@@ -1,0 +1,35 @@
+---
+- name: "asusctl : apt install"
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      - cmake
+      - libfontconfig-dev
+      - libudev-dev
+      - pkg-config
+
+- name: "asusctl : git clone"
+  become: yes
+  ansible.builtin.git:
+    repo: "{{ asus_asusctl_repo }}"
+    dest: /usr/local/src/asusctl
+    version: "{{ asus_asusctl_version }}"
+    depth: 1
+
+- name: "asusctl : create make target"
+  become: yes
+  ansible.builtin.file:
+    path: /usr/local/src/asusctl/target
+    state: directory
+    owner: root
+    group: adm
+    mode: '2775'
+
+- name: "asusctl : make"
+  make: chdir="/usr/local/src/asusctl"
+
+- name: "asusctl : make install"
+  become: yes
+  make: chdir="/usr/local/src/asusctl" target=install

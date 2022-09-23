@@ -1,0 +1,20 @@
+---
+- name: Install build dependencies
+  become: yes
+  ansible.builtin.apt: pkg="build-essential" state=present cache_valid_time=3600
+
+- name: Install rustup
+  become: true
+  community.general.snap: name=rustup classic=yes state=present
+
+- name: Update rust stable release
+  check_mode: no
+  args: { chdir: '/tmp' }
+  ansible.builtin.shell: "rustup update stable{% if ansible_check_mode %} --no-self-update{% endif %}"
+  register: res
+  changed_when: res.stdout is not search("unchanged")
+  failed_when: res.rc != 0 and not ansible_check_mode
+
+- ansible.builtin.include_tasks: asusctl.yml
+
+- ansible.builtin.include_tasks: supergfxctl.yml

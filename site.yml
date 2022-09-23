@@ -6,6 +6,7 @@
   roles:
     - { role: common }
     - { role: sshd }
+    - { role: asus, tags: [asus, oem] }
     - { role: dell, tags: [dell, oem] }
     - { role: gnome, tags: [gnome] }
     - { role: fusuma, tags: [fusuma] }
