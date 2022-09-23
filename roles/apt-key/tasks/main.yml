@@ -41,9 +41,11 @@
     content: "{{ apt_key_source }}\n"
     mode: 0644
   become: yes
+  register: apt_source_copy
 
 - name: Update apt cache
   ansible.builtin.apt_repository:
     repo: "{{ apt_key_source }}"
     filename: "{{ name }}"
   become: yes
+  changed_when: apt_source_copy.changed
