@@ -1,4 +1,9 @@
 ---
+- name: "Install extension {{ name }} package dependencies"
+  become: yes
+  ansible.builtin.apt: pkg="{{ packages }}" state=present cache_valid_time=3600
+  when: packages | length > 0
+
 - name: "{{ enable | mapaction | title }} extension {{ name }}"
   check_mode: no
   args: { executable: /bin/bash }

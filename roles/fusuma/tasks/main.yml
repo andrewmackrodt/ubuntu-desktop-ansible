@@ -44,12 +44,7 @@
 
 - name: Copy fusuma config
   ansible.builtin.copy:
-    src: config.yml
-    dest: "{{ ansible_env.HOME }}/.config/fusuma/config.yml"
-    mode: 0664
-
-- name: Start fusuma on login
-  ansible.builtin.copy:
-    src: fusuma.desktop
-    dest: "{{ ansible_env.HOME }}/.config/autostart/fusuma.desktop"
-    mode: 0775
+    src: config/
+    dest: "{{ ansible_env.HOME }}/.config/"
+    directory_mode: 0700
+    mode: 0600

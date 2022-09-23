@@ -3,12 +3,13 @@
   become: yes
   ansible.builtin.apt: pkg=gnome-shell-extension-manager state=present cache_valid_time=3600
 
-- name: Map gnome_extensions to include name
+- name: Merge gnome_extensions_defaults
   ansible.builtin.set_fact:
     gnome_extensions_items: |
       {{ gnome_extensions_items | default([]) + [item.value | combine({ 
-        'name': item.key,
         'enable': item.value.enable | default(True),
+        'name': item.key,
+        'packages': item.value.packages | default([]),
         'settings': item.value.settings | default({}) | dict2items,
         'system': item.value.system | default(False),
       })] }}
@@ -39,9 +40,10 @@
 - name: Configure extensions
   ansible.builtin.include_tasks: configure-extension.yml
   vars:
-    namespace: "{{ outer_item.namespace }}"
-    name: "{{ outer_item.name }}"
     enable: "{{ outer_item.enable }}"
+    name: "{{ outer_item.name }}"
+    namespace: "{{ outer_item.namespace }}"
+    packages: "{{ outer_item.packages }}"
     settings: "{{ outer_item.settings }}"
   loop_control:
     loop_var: outer_item
