@@ -14,6 +14,7 @@
 - name: Install microsoft edge
   become: yes
   ansible.builtin.apt: pkg="{{ microsoft_edge_apt_pkg }}" state=present cache_valid_time=3600
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Update dock pinned apps
   ansible.builtin.include_role: name=pin-to-dock

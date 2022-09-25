@@ -14,3 +14,4 @@
 - name: Install ms-teams
   become: yes
   ansible.builtin.apt: pkg="{{ teams_apt_pkg }}" state=present cache_valid_time=3600
+  ignore_errors: "{{ ansible_check_mode }}"
