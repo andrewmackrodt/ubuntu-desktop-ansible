@@ -4,6 +4,7 @@
   vars:
     # see group_vars/all.yml
   roles:
+    - { role: kernel, tags: [ kernel ] }
     - { role: common, tags: [ common ] }
     - { role: sshd, tags: [ ssh ] }
     - { role: asus, tags: [ asus, oem ] }

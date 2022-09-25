@@ -9,9 +9,9 @@
     cmd: |-
       set -e
       if [ "{{ dearmor | default(False) }}" = "True" ]; then
-        curl -fsSL -o- "{{ url }}" | gpg --dearmor -o "{{ apt_key_temp_key.path }}" --yes
+        curl -fsSL -o- '{{ url }}' | gpg --dearmor -o '{{ apt_key_temp_key.path }}' --yes
       else
-        curl -fsSL -o"{{ apt_key_temp_key.path }}" "{{ url }}"
+        curl -fsSL -o'{{ apt_key_temp_key.path }}' '{{ url }}'
       fi
   check_mode: no
   changed_when: false
@@ -23,6 +23,9 @@
           | regex_replace('([ \t]+[a-z]+://)', ' [signed-by={{ apt_key_key }}]\1')
           | replace('] [signed-by=', ' signed-by=')
       }}
+
+- ansible.builtin.set_fact:
+    apt_key_source: "{{ apt_key_source | replace('{{ apt_key_key }}', apt_key_key) }}"
 
 - name: Add apt key {{ keyname }}
   ansible.builtin.copy:
