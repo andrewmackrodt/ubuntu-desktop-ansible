@@ -1,0 +1,20 @@
+---
+- name: Enable arch i386
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /var/lib/dpkg/arch
+    line: i386
+  register: arch_i386
+
+- name: Update apt cache
+  ansible.builtin.shell: apt-get update -qqy
+  args: { warn: no }
+  become: yes
+  changed_when: arch_i386.changed
+
+- name: Install steam
+  become: yes
+  ansible.builtin.apt: pkg=steam:i386 state=present cache_valid_time=3600
+
+- name: Update dock pinned apps
+  ansible.builtin.include_role: name=pin-to-dock
