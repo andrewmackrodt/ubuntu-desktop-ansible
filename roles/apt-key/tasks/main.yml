@@ -47,8 +47,7 @@
   register: apt_source_copy
 
 - name: Update apt cache
-  ansible.builtin.apt_repository:
-    repo: "{{ apt_key_source }}"
-    filename: "{{ name }}"
+  ansible.builtin.shell: apt-get update -qqy
+  args: { warn: no }
   become: yes
   changed_when: apt_source_copy.changed
