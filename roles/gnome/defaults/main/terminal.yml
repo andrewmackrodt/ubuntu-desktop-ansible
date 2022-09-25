@@ -2,8 +2,8 @@
 gnome_terminal_default_profile_id: ':b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
 gnome_terminal_default_profile_background_color: "'rgb(23,20,33)'"
 gnome_terminal_default_profile_cursor_shape: "'ibeam'"
-gnome_terminal_default_profile_default_size_columns: '100'
-gnome_terminal_default_profile_default_size_rows: '30'
+gnome_terminal_default_profile_default_size_columns: '120'
+gnome_terminal_default_profile_default_size_rows: '36'
 gnome_terminal_default_profile_foreground_color: "'rgb(208,207,204)'"
 gnome_terminal_default_profile_use_theme_colors: 'false'
 gnome_terminal_default_profile_visible_name: "'Default'"
