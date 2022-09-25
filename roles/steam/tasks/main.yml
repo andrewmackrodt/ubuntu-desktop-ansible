@@ -3,7 +3,11 @@
   become: yes
   ansible.builtin.lineinfile:
     path: /var/lib/dpkg/arch
-    line: i386
+    line: "{{ item }}"
+    create: yes
+  with_items:
+    - amd64
+    - i386
   register: arch_i386
 
 - name: Update apt cache
