@@ -65,7 +65,7 @@
     [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
     dconf write "$key" "{{ item[1].value }}"
   with_nested:
-    - ['background', 'screensaver']
+    - [ 'background', 'screensaver' ]
     - "{{ gnome_background_defaults | combine(gnome_background | default({}), recursive=true) | dict2items }}"
   register: res
   changed_when: res.stdout is search("ansible_changed=yes")

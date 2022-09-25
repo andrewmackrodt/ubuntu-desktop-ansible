@@ -3,11 +3,13 @@
 ## Requirements
 
 Install ansible:
+
 ```sh
 sudo apt install ansible
 ```
 
 Install externally hosted roles from requirements.yml:
+
 ```sh
 ansible-galaxy install -r requirements.yml
 ```
@@ -39,6 +41,7 @@ gnome_background:
 ### local
 
 Run against local machine:
+
 ```sh
 ansible-playbook site.yml -i local --ask-become-pass 
 ```
@@ -46,30 +49,39 @@ ansible-playbook site.yml -i local --ask-become-pass
 ### vagrant
 
 Install libvirt and virt-manager:
+
 ```sh
 sudo apt install qemu-kvm virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils
 sudo systemctl enable libvirtd --now
 sudo adduser $(whoami) libvirt
 ```
-Log out and log in to apply new groups before continuing. 
+
+Log out and log in to apply new groups before continuing.
 
 Install vagrant and required plugins:
+
 ```sh
 sudo apt install vagrant
 vagrant plugin install vagrant-env
 vagrant plugin install vagrant-libvirt
 vagrant plugin install vagrant-vbguest
 ```
+
 Copy `.env.sample` to `.env` and make any modifications:
+
 ```sh
 cp .env.sample .env
 editor .env
 ```
+
 Start virtual machine using vagrant:
+
 ```sh
 vagrant up
 ```
+
 To re-run the ansible playbook:
+
 ```sh
 vagrant provision --provision-with ansible
 ```

@@ -4,15 +4,15 @@
   vars:
     # see group_vars/all.yml
   roles:
-    - { role: common }
-    - { role: sshd }
-    - { role: asus, tags: [asus, oem] }
-    - { role: dell, tags: [dell, oem] }
-    - { role: gnome, tags: [gnome] }
-    - { role: fusuma, tags: [fusuma] }
-    - { role: firefox, tags: [firefox] }
-    - { role: microsoft-edge, tags: [edge] }
-    - { role: vscode, tags: [code] }
-    - { role: spotify, tags: [spotify] }
-    - { role: github-cli, tags: [github, git] }
-    - { role: ms-teams, tags: [teams] }
+    - { role: common, tags: [ common ] }
+    - { role: sshd, tags: [ ssh ] }
+    - { role: asus, tags: [ asus, oem ] }
+    - { role: dell, tags: [ dell, oem ] }
+    - { role: gnome, tags: [ gnome ] }
+    - { role: fusuma, tags: [ fusuma ] }
+    - { role: firefox, tags: [ firefox ] }
+    - { role: microsoft-edge, tags: [ edge ] }
+    - { role: vscode, tags: [ code ] }
+    - { role: spotify, tags: [ spotify ] }
+    - { role: github-cli, tags: [ github, git ] }
+    - { role: ms-teams, tags: [ teams ] }

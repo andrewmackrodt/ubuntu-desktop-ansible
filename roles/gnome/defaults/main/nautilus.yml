@@ -3,4 +3,4 @@ gnome_nautilus_default_zoom_level: "'standard'"
 
 gnome_nautilus_defaults:
   /org/gnome/nautilus/icon-view:
-      default-zoom-level: "{{ gnome_nautilus_default_zoom_level }}"
+    default-zoom-level: "{{ gnome_nautilus_default_zoom_level }}"
