@@ -15,6 +15,7 @@
     - { role: microsoft-edge, tags: [ edge ] }
     - { role: vscode, tags: [ code ] }
     - { role: steam, tags: [ steam ] }
-    - { role: spotify, tags: [ spotify ] }
+    - { role: spotify, tags: [ spotify, media ] }
+    - { role: smplayer, tags: [ smplayer, media ] }
     - { role: github-cli, tags: [ github, git ] }
     - { role: ms-teams, tags: [ teams ] }
