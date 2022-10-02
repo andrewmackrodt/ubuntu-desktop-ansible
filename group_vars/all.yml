@@ -13,13 +13,14 @@ gse_openweather_set_city: "'51.507351,-0.127758>London, United Kingdom>0'"
 # gnome dock
 pin_to_dock:
   - { name: 'org.gnome.Nautilus.desktop' }
-  - { name: 'firefox_firefox.desktop' }
+  - { name: 'firefox.desktop' }
   - { name: 'microsoft-edge.desktop' }
   - { name: 'org.gnome.Terminal.desktop' }
   - { name: 'code.desktop', fallback: [ 'org.gnome.gedit.desktop' ] }
   - { name: 'jetbrains-idea.desktop' }
   - { name: 'discord.desktop' }
   - { name: 'steam.desktop' }
+  - { name: 'jetbrains-idea.desktop' }
   - { name: 'spotify.desktop', fallback: [ 'rhythmbox.desktop' ] }
   - { name: 'smplayer.desktop', fallback: [ 'org.gnome.Totem.desktop' ] }
   - { name: 'gnome-control-center.desktop' }

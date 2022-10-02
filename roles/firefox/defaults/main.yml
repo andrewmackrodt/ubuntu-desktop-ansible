@@ -1,0 +1,6 @@
+---
+firefox_apt_key_url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x0ab215679c571d1c8325275b9bdb3d89ce49ec21
+firefox_apt_key_dearmor: yes
+firefox_apt_key_name: mozillateam-ubuntu-ppa.gpg
+firefox_apt_name: "mozillateam-ubuntu-ppa-{{ ansible_distribution_release }}"
+firefox_apt_pkg: firefox

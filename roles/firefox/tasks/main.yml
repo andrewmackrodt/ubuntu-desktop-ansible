@@ -1,8 +1,47 @@
 ---
-- name: Install firefox
+- name: Remove firefox snap
   become: true
-  community.general.snap: name=firefox state=present
+  community.general.snap: name=firefox state=absent
+
+- name: Check if firefox snap transitional package installed
+  check_mode: no
+  ansible.builtin.shell: dpkg -l firefox | awk '$2 == "firefox" { print $3 }'
+  changed_when: false
+  failed_when: false
+  register: ff_check_transitional
+
+- name: Remove firefox snap transitional package
+  become: yes
+  ansible.builtin.apt: pkg="{{ firefox_apt_pkg }}" state=absent
+  when: ff_check_transitional.stdout is search("snap")
+
+- ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: |-
+      deb https://ppa.launchpadcontent.net/mozillateam/ppa/ubuntu/ {{ ansible_distribution_release }} main
+      # deb-src https://ppa.launchpadcontent.net/mozillateam/ppa/ubuntu/ {{ ansible_distribution_release }} main"
+    name: "{{ firefox_apt_name }}"
+    keyname: "{{ firefox_apt_key_name }}"
+    url: "{{ firefox_apt_key_url }}"
+    dearmor: "{{ firefox_apt_key_dearmor }}"
+  tags:
+    - apt-key
+
+- name: Set apt preference to install firefox from mozillateam ppa
+  ansible.builtin.copy:
+    dest: /etc/apt/preferences.d/mozilla-firefox
+    content: |-
+      Package: firefox*
+      Pin: release o=LP-PPA-mozillateam
+      Pin-Priority: 1001
+    mode: 0644
+  become: yes
+
+- name: Install firefox
+  become: yes
+  ansible.builtin.apt: pkg="{{ firefox_apt_pkg }}" state=present cache_valid_time=3600
 
 - name: Update dock pinned apps
   ansible.builtin.include_role: name=pin-to-dock
-
