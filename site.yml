@@ -13,6 +13,7 @@
     - { role: firefox, tags: [ firefox ] }
     - { role: microsoft-edge, tags: [ edge ] }
     - { role: vscode, tags: [ code ] }
+    - { role: git, tags: [ git ] }
     - { role: github-cli, tags: [ github, git ] }
     - { role: spotify, tags: [ spotify, media ] }
     - { role: smplayer, tags: [ smplayer, media ] }

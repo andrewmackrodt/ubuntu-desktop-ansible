@@ -1,0 +1,13 @@
+---
+git_config_core_autocrlf: "false"
+git_config_init_defaultbranch: "main"
+git_config_push_default: "current"
+git_config_remote_origin_prune: "true"
+git_config_rerere_enabled: "true"
+
+git_config_defaults:
+  core.autocrlf: "{{ git_config_core_autocrlf }}"
+  init.defaultbranch: "{{ git_config_init_defaultbranch }}"
+  push.default: "{{ git_config_push_default }}"
+  remote.origin.prune: "{{ git_config_remote_origin_prune }}"
+  rerere.enabled: "{{ git_config_rerere_enabled }}"
