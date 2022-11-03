@@ -51,7 +51,7 @@ ansible-playbook site.yml -i local --ask-become-pass
 Install libvirt and virt-manager:
 
 ```sh
-sudo apt install qemu-kvm virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils
+sudo apt install qemu-kvm virt-manager libvirt-daemon-system virtinst libvirt-clients dnsmasq-base libguestfs-tools
 sudo systemctl enable libvirtd --now
 sudo adduser $(whoami) libvirt
 ```
@@ -61,7 +61,7 @@ Log out and log in to apply new groups before continuing.
 Install vagrant and required plugins:
 
 ```sh
-sudo apt install vagrant
+sudo apt install vagrant ruby-dev ruby-fog-libvirt
 vagrant plugin install vagrant-env
 vagrant plugin install vagrant-libvirt
 vagrant plugin install vagrant-vbguest
