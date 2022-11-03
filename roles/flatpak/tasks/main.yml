@@ -1,0 +1,10 @@
+---
+- name: Install flatpak extensions
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      - flatpak
+      - flatpak-builder
+      - gnome-software-plugin-flatpak

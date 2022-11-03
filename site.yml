@@ -10,12 +10,13 @@
     - { role: asus, tags: [ asus, oem ] }
     - { role: dell, tags: [ dell, oem ] }
     - { role: gnome, tags: [ gnome ] }
-    - { role: fusuma, tags: [ fusuma ] }
     - { role: firefox, tags: [ firefox ] }
     - { role: microsoft-edge, tags: [ edge ] }
     - { role: vscode, tags: [ code ] }
-    - { role: steam, tags: [ steam ] }
+    - { role: github-cli, tags: [ github, git ] }
     - { role: spotify, tags: [ spotify, media ] }
     - { role: smplayer, tags: [ smplayer, media ] }
-    - { role: github-cli, tags: [ github, git ] }
+    - { role: fusuma, tags: [ fusuma ] }
+    - { role: flatpak, tags: [ flatpak ] }
+    - { role: steam, tags: [ steam ] }
     - { role: ms-teams, tags: [ teams ] }
