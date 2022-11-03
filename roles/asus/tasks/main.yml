@@ -5,4 +5,4 @@
 
 - name: Execute tasks for Asus devices
   ansible.builtin.include_tasks: oem.yml
-  when: sys_vendor is search("Asus") or asus_force_role_enabled
+  when: (sys_vendor | lower) is search("asus") or asus_force_role_enabled
