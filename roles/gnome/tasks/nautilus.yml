@@ -1,4 +1,13 @@
 ---
+- name: Install nautilus extensions
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      - nautilus-admin
+      - nautilus-gtkhash
+
 - name: Map nautilus settings
   ansible.builtin.set_fact:
     gnome_nautilus_items: |
