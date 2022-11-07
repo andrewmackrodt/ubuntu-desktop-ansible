@@ -34,8 +34,8 @@
     dest: /etc/apt/preferences.d/mozilla-firefox
     content: |-
       Package: firefox*
-      Pin: release o=LP-PPA-mozillateam
-      Pin-Priority: 1001
+      Pin: release o=Ubuntu*
+      Pin-Priority: -1
     mode: 0644
   become: yes
 
