@@ -1,0 +1,17 @@
+---
+- ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: "deb http://deb.xanmod.org releases main"
+    name: "{{ xanmod_apt_name }}"
+    keyname: "{{ xanmod_apt_key_name }}"
+    url: "{{ xanmod_apt_key_url }}"
+    dearmor: "{{ xanmod_apt_key_dearmor }}"
+  tags:
+    - apt-key
+
+- name: Install xanmod
+  become: yes
+  ansible.builtin.apt: pkg="{{ xanmod_apt_pkg }}" state=present cache_valid_time=3600
+  ignore_errors: "{{ ansible_check_mode }}"

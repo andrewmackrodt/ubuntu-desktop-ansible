@@ -1,3 +1,6 @@
 ---
 - ansible.builtin.include_tasks: mainline.yml
   when: kernel_mainline_enabled
+
+- ansible.builtin.include_tasks: xanmod.yml
+  when: kernel_xanmod_enabled

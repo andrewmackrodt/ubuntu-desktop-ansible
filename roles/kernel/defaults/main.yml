@@ -1,3 +1,12 @@
 ---
+# mainline
 kernel_mainline_enabled: no
-kernel_mainline_version: 5.19.11
+kernel_mainline_version: 6.0.9
+
+# xanmod
+kernel_xanmod_enabled: no
+xanmod_apt_key_url: https://dl.xanmod.org/gpg.key
+xanmod_apt_key_dearmor: yes
+xanmod_apt_key_name: xanmod-kernel.gpg
+xanmod_apt_name: xanmod-kernel
+xanmod_apt_pkg: linux-xanmod-x64v3
