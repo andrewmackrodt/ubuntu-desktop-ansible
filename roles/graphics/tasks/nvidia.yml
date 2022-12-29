@@ -1,0 +1,54 @@
+---
+- name: "nvidia-vaapi-driver : apt install dependencies"
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      - gstreamer1.0-plugins-bad
+      - libffmpeg-nvenc-dev
+      - libva-dev
+      - meson
+
+- name: "nvidia-vaapi-driver : git clone"
+  become: yes
+  ansible.builtin.git:
+    repo: "{{ nvidia_vaapi_driver_repo }}"
+    dest: /usr/local/src/nvidia-vaapi-driver
+    version: "{{ nvidia_vaapi_driver_version }}"
+    depth: 1
+
+- name: "nvidia-vaapi-driver : mkdir build"
+  become: yes
+  ansible.builtin.file:
+    path: "/usr/local/src/nvidia-vaapi-driver/{{ item }}"
+    state: directory
+    owner: root
+    group: adm
+    mode: "2775"
+  with_items:
+    - build
+    - subprojects
+
+- name: "nvidia-vaapi-driver : meson setup build"
+  args: { chdir: /usr/local/src/nvidia-vaapi-driver }
+  ansible.builtin.shell: meson setup build
+  register: res
+  changed_when: res.stdout is not search("already configured")
+  failed_when: res.rc != 0 and not ansible_check_mode
+
+
+- name: "nvidia-vaapi-driver : meson install -C build"
+  become: yes
+  args: { chdir: /usr/local/src/nvidia-vaapi-driver }
+  ansible.builtin.shell: meson install -C build
+  register: res
+  changed_when: res.stdout is not search("no work to do")
+  failed_when: res.rc != 0 and not ansible_check_mode
+
+- name: "nvidia-vaapi-driver : /etc/environment"
+  become: yes
+  ansible.builtin.copy:
+    src: 50nvidia-vaapi-driver.conf
+    dest: /etc/environment.d/50nvidia-vaapi-driver.conf
+    mode: "0644"

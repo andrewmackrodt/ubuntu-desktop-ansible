@@ -1,0 +1,13 @@
+---
+#- name: Add ppa:oibaf/graphics-drivers
+#  ansible.builtin.apt_repository: repo=ppa:oibaf/graphics-drivers state=present
+#
+#- name: Add ppa:graphics-drivers/ppa
+#  ansible.builtin.apt_repository: repo=ppa:graphics-drivers/ppa state=present
+
+- name: Register nvidia card present
+  stat: path=/dev/nvidia0
+  register: dev_nvidia
+
+- ansible.builtin.include_tasks: nvidia.yml
+  when: dev_nvidia.stat.exists

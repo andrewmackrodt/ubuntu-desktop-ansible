@@ -7,6 +7,7 @@
     - { role: kernel, tags: [ kernel ] }
     - { role: common, tags: [ common ] }
     - { role: sshd, tags: [ ssh ] }
+    - { role: graphics, tags: [ graphics ] }
     - { role: asus, tags: [ asus, oem ] }
     - { role: dell, tags: [ dell, oem ] }
     - { role: gnome, tags: [ gnome ] }
