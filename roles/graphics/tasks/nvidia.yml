@@ -6,7 +6,9 @@
     state: present
     pkg:
       - gstreamer1.0-plugins-bad
+      - libegl-dev
       - libffmpeg-nvenc-dev
+      - libgstreamer-plugins-bad1.0-dev
       - libva-dev
       - meson
 
