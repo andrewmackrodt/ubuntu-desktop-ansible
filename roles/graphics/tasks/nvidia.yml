@@ -48,9 +48,9 @@
   changed_when: res.stdout is not search("no work to do")
   failed_when: res.rc != 0 and not ansible_check_mode
 
-- name: "nvidia-vaapi-driver : /etc/environment"
+- name: "nvidia-workarounds.sh"
   become: yes
   ansible.builtin.copy:
-    src: 50nvidia-vaapi-driver.conf
-    dest: /etc/environment.d/50nvidia-vaapi-driver.conf
+    src: nvidia-workarounds.sh
+    dest: /etc/profile.d/nvidia-workarounds.sh
     mode: "0644"
