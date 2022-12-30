@@ -5,6 +5,17 @@
 #- name: Add ppa:graphics-drivers/ppa
 #  ansible.builtin.apt_repository: repo=ppa:graphics-drivers/ppa state=present
 
+- name: "graphics : apt install utils"
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      - mesa-utils
+      - vainfo
+      - vulkan-tools
+
+
 - name: Register nvidia card present
   stat: path=/dev/nvidia0
   register: dev_nvidia

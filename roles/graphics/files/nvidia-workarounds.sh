@@ -11,7 +11,9 @@ devices=$( switcherooctl \
 
 # nvidia specific behaviours
 if echo "$devices" | grep -qi 'Name:NVIDIA'; then
-    if echo "$devices" | grep -i 'Default:yes' | grep -qi 'Name:NVIDIA'; then
+    if ( echo "$devices" | grep -i 'Default:yes' | grep -qi 'Name:NVIDIA' ) \
+        || ( vainfo 2>/dev/null 2>/dev/null | grep -qi 'NVDEC' ) \
+    ; then
         # export vaapi environment variables if default gpu and nvidia_drv_video_path exists
         if [ -f "$nvidia_drv_video_path" ]; then
             export LIBVA_DRIVER_NAME=nvidia
