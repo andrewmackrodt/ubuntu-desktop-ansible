@@ -22,3 +22,4 @@
     - { role: flatpak, tags: [ flatpak ] }
     - { role: steam, tags: [ steam ] }
     - { role: ms-teams, tags: [ teams ] }
+    - { role: vagrant, tags: [ vagrant ] }

@@ -1,0 +1,6 @@
+---
+vagrant_apt_key_url: https://apt.releases.hashicorp.com/gpg
+vagrant_apt_key_dearmor: yes
+vagrant_apt_key_name: hashicorp-archive-keyring.gpg
+vagrant_apt_name: hashicorp
+vagrant_apt_pkg: vagrant
