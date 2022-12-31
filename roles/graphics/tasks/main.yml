@@ -1,9 +1,33 @@
 ---
-#- name: Add ppa:oibaf/graphics-drivers
-#  ansible.builtin.apt_repository: repo=ppa:oibaf/graphics-drivers state=present
-#
-#- name: Add ppa:graphics-drivers/ppa
-#  ansible.builtin.apt_repository: repo=ppa:graphics-drivers/ppa state=present
+- name: Add ppa:oibaf/graphics-drivers
+  ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: |-
+      deb https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu/ {{ ansible_distribution_release }} main
+      # deb-src https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu/ {{ ansible_distribution_release }} main
+    name: oibaf-ubuntu-graphics-drivers
+    keyname: oibaf-ubuntu-graphics-drivers.gpg
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x5abce68ff4633ea42e219156957d2708a03a4626
+    dearmor: yes
+  tags:
+    - apt-key
+
+- name: Add ppa:graphics-drivers/ppa
+  ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: |-
+      deb https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu/ {{ ansible_distribution_release }} main
+      # deb-src https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu/ {{ ansible_distribution_release }} main
+    name: graphics-drivers-ubuntu-ppa
+    keyname: graphics-drivers-ubuntu-ppa.gpg
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2388ff3be10a76f638f80723fcae110b1118213c
+    dearmor: yes
+  tags:
+    - apt-key
 
 - name: "graphics : apt install utils"
   become: yes
