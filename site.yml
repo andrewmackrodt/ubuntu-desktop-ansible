@@ -4,22 +4,28 @@
   vars:
     # see group_vars/all.yml
   roles:
-    - { role: kernel, tags: [ kernel ] }
-    - { role: common, tags: [ common ] }
-    - { role: sshd, tags: [ ssh ] }
-    - { role: graphics, tags: [ graphics ] }
+    # os essentials
+    - { role: kernel, tags: [ kernel, os ] }
+    - { role: common, tags: [ common, os ] }
+    - { role: sshd, tags: [ ssh, os ] }
+    - { role: graphics, tags: [ graphics, os ] }
+    - { role: flatpak, tags: [ flatpak, os ] }
+    # manufacturer specific
     - { role: asus, tags: [ asus, oem ] }
     - { role: dell, tags: [ dell, oem ] }
-    - { role: gnome, tags: [ gnome ] }
-    - { role: firefox, tags: [ firefox ] }
-    - { role: microsoft-edge, tags: [ edge ] }
-    - { role: vscode, tags: [ code ] }
-    - { role: git, tags: [ git ] }
-    - { role: github-cli, tags: [ github, git ] }
+    # desktop common
+    - { role: gnome, tags: [ gnome, desktop ] }
+    - { role: firefox, tags: [ firefox, desktop ] }
+    - { role: microsoft-edge, tags: [ edge, desktop ] }
+    - { role: vscode, tags: [ code, desktop ] }
+    - { role: git, tags: [ git, desktop ] }
+    - { role: github-cli, tags: [ github, git, desktop ] }
+    - { role: fusuma, tags: [ fusuma, desktop ] }
+    - { role: ms-teams, tags: [ teams, desktop ] }
+    # virtualization
+    - { role: libvirt, tags: [ libvirt, virtualization ] }
+    - { role: vagrant, tags: [ vagrant, virtualization ] }
+    # media
     - { role: spotify, tags: [ spotify, media ] }
     - { role: smplayer, tags: [ smplayer, media ] }
-    - { role: fusuma, tags: [ fusuma ] }
-    - { role: flatpak, tags: [ flatpak ] }
-    - { role: steam, tags: [ steam ] }
-    - { role: ms-teams, tags: [ teams ] }
-    - { role: vagrant, tags: [ vagrant ] }
+    - { role: steam, tags: [ steam, media ] }

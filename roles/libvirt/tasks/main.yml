@@ -1,0 +1,28 @@
+---
+- name: Install qemu-kvm and virt-manager
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    pkg:
+    - dnsmasq-base
+    - libguestfs-tools
+    - libvirt-clients
+    - libvirt-daemon-system
+    - nfs-kernel-server
+    - qemu-kvm
+    - virt-manager
+    - virtinst
+
+- name: Enable libvirtd
+  become: yes
+  ansible.builtin.systemd:
+    name: libvirtd
+    enabled: yes
+
+- name: Add user to group libvirt
+  become: yes
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: libvirt
