@@ -1,0 +1,6 @@
+---
+virtualbox_apt_key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+virtualbox_apt_key_dearmor: yes
+virtualbox_apt_key_name: oracle-virtualbox-2016.gpg
+virtualbox_apt_name: virtualbox
+virtualbox_apt_pkg: virtualbox-7.0

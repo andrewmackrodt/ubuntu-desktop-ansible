@@ -1,0 +1,50 @@
+---
+- ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
+    name: "{{ virtualbox_apt_name }}"
+    keyname: "{{ virtualbox_apt_key_name }}"
+    url: "{{ virtualbox_apt_key_url }}"
+    dearmor: "{{ virtualbox_apt_key_dearmor }}"
+  tags:
+    - apt-key
+
+- name: Install virtualbox
+  become: yes
+  ansible.builtin.apt: pkg="{{ virtualbox_apt_pkg }}" state=present cache_valid_time=3600
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Add user to group vboxusers
+  become: yes
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: vboxusers
+
+- name: Register virtualbox version
+  check_mode: no
+  ansible.builtin.shell: "VBoxManage --version | sed -nE 's/^([0-9]+\\.[0-9]+\\.[0-9]+).*/\\1/p'"
+  register: vbox_version
+  changed_when: no
+  failed_when: vbox_version.stdout == "" and not ansible_check_mode
+
+- name: Check if extension pack is already installed
+  check_mode: no
+  ansible.builtin.shell: "VBoxManage list extpacks | grep -E 'Version:\\s*{{ vbox_version.stdout | replace('.', '\\.') }}'"
+  register: vbox_ext_version
+  changed_when: no
+  failed_when: no
+
+- name: Download virtualbox extension pack
+  ansible.builtin.get_url:
+    url: "https://download.virtualbox.org/virtualbox/{{ vbox_version.stdout }}/Oracle_VM_VirtualBox_Extension_Pack-{{ vbox_version.stdout }}.vbox-extpack"
+    dest: /tmp/
+  register: vbox_ext_download
+  when: vbox_ext_version.stdout == ""
+
+- name: Install virtualbox extension pack
+  become: yes
+  ansible.builtin.shell: "echo 'y' | VBoxManage extpack install --replace {{ vbox_ext_download.dest }}"
+  when: vbox_ext_version.stdout == ""
