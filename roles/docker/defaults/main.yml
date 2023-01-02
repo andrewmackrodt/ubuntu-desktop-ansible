@@ -1,0 +1,6 @@
+---
+docker_apt_key_url: https://download.docker.com/linux/ubuntu/gpg
+docker_apt_key_dearmor: yes
+docker_apt_key_name: docker.gpg
+docker_apt_name: docker
+docker_apt_pkg: docker-ce

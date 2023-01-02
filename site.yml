@@ -23,6 +23,7 @@
     - { role: fusuma, tags: [ fusuma, desktop ] }
     - { role: ms-teams, tags: [ teams, desktop ] }
     # virtualization
+    - { role: docker, tags: [ docker, virtualization ] }
     - { role: virtualbox, tags: [ virtualbox, virtualization ] }
     - { role: libvirt, tags: [ libvirt, virtualization ] }
     - { role: vagrant, tags: [ vagrant, virtualization ] }
