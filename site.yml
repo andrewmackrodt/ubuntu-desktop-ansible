@@ -15,6 +15,7 @@
     - { role: dell, tags: [ dell, oem ] }
     # desktop common
     - { role: gnome, tags: [ gnome, desktop ] }
+    - { role: libratbag, tags: [ libratbag, desktop ] }
     - { role: firefox, tags: [ firefox, desktop ] }
     - { role: microsoft-edge, tags: [ edge, desktop ] }
     - { role: vscode, tags: [ code, desktop ] }

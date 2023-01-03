@@ -1,0 +1,23 @@
+---
+- name: Add ppa:libratbag-piper/piper-libratbag-git
+  ansible.builtin.include_role:
+    name: apt-key
+    apply: { tags: [ always ] }
+  vars:
+    source: |-
+      deb http://ppa.launchpad.net/libratbag-piper/piper-libratbag-git/ubuntu/ {{ ansible_distribution_release }} main
+      # deb-src http://ppa.launchpad.net/libratbag-piper/piper-libratbag-git/ubuntu/ {{ ansible_distribution_release }} main
+    name: libratbag-piper-ubuntu-piper-libratbag-git
+    keyname: libratbag-piper-ubuntu-piper-libratbag-git.gpg
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x45ef41c70818d25b3298d07dd9c845e608c36551
+    dearmor: yes
+  tags:
+    - apt-key
+
+- name: "Apt install piper"
+  become: yes
+  ansible.builtin.apt: pkg=piper state=present cache_valid_time=3600
+
+- name: Enable ratbagd
+  become: yes
+  ansible.builtin.systemd: name=ratbagd enabled=yes state=started
