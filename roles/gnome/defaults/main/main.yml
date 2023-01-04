@@ -23,6 +23,9 @@ gnome_extensions_defaults:
   status-area-horizontal-spacing@mathematical.coffee.gmail.com: "{{ gse_status_area_hspacing }}"
   ubuntu-dock@ubuntu.com: "{{ gse_ubuntu_dock }}"
 
-gnome_icon_theme: "'Papirus'"
+gnome_interface_defaults:
+  color-scheme: "'prefer-dark'"
+  icon-theme: "'Papirus-Dark'"
+  gtk-theme: "'Yaru-blue-dark'"
 
 gnome_input_source: 'us'

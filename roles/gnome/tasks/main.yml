@@ -63,7 +63,7 @@
     dest: "{{ ansible_user_dir }}/Pictures/Wallpapers/{{ item.filename }}"
   with_items: "{{ gnome_wallpapers }}"
 
-- name: Set wallpaper
+- name: Set gnome desktop
   check_mode: no
   args: { executable: /bin/bash }
   ansible.builtin.shell: |-
@@ -86,17 +86,19 @@
   become: yes
   ansible.builtin.apt: pkg=papirus-icon-theme state=present cache_valid_time=3600
 
-- name: Set icon theme
+- name: Set gnome interface
   check_mode: no
   args: { executable: /bin/bash }
   ansible.builtin.shell: |-
     set -e
-    key="/org/gnome/desktop/interface/icon-theme"
+    key="/org/gnome/desktop/interface/{{ item.key }}"
     val=$(dconf read "$key")
-    [[ "$val" != "{{ gnome_icon_theme }}" ]] || exit 0
+    [[ "$val" != "{{ item.value }}" ]] || exit 0
     echo "ansible_changed=yes"
     [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
-    dconf write "$key" "{{ gnome_icon_theme }}"
+    dconf write "$key" "{{ item.value }}"
+  with_items:
+    - "{{ gnome_interface_defaults | combine(gnome_interface | default({}), recursive=true) | dict2items }}"
   register: res
   changed_when: res.stdout is search("ansible_changed=yes")
 
