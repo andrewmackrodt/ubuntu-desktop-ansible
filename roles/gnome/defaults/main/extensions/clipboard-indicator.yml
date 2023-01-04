@@ -1,0 +1,17 @@
+---
+gse_clipboard_indicator_enable: yes
+gse_clipboard_indicator_confirm_clear: 'false'
+gse_clipboard_indicator_enable_keybindings: 'false'
+gse_clipboard_indicator_history_size: '10'
+gse_clipboard_indicator_preview_size: '80'
+
+gse_clipboard_indicator:
+  name: clipboard-indicator@tudmotu.com
+  id: 779
+  namespace: /org/gnome/shell/extensions/clipboard-indicator
+  enable: "{{ gse_clipboard_indicator_enable }}"
+  settings:
+    confirm-clear: "{{ gse_clipboard_indicator_confirm_clear }}"
+    enable-keybindings: "{{ gse_clipboard_indicator_enable_keybindings }}"
+    history-size: "{{ gse_clipboard_indicator_history_size }}"
+    preview-size: "{{ gse_clipboard_indicator_preview_size }}"

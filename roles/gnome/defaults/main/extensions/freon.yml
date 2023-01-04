@@ -1,5 +1,5 @@
 ---
-gse_freon_enable: yes
+gse_freon_enable: false
 
 gse_freon:
   name: freon@UshakovVasilii_Github.yahoo.com

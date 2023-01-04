@@ -1,4 +1,8 @@
 ---
+- name: "apt install nvtop"
+  become: yes
+  ansible.builtin.apt: pkg=nvtop state=present cache_valid_time=3600
+
 - name: "nvidia-vaapi-driver : apt install dependencies"
   become: yes
   ansible.builtin.apt:

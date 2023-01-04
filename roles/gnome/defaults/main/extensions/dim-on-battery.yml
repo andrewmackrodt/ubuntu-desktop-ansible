@@ -1,5 +1,5 @@
 ---
-gse_dim_on_battery_enable: yes
+gse_dim_on_battery_enable: false
 gse_dim_on_battery_set_ac_brightness: '70.0'
 gse_dim_on_battery_set_battery_brightness: '30.0'
 gse_dim_on_battery_set_legacy_mode: 'true'

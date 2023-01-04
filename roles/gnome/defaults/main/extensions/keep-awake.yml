@@ -1,5 +1,5 @@
 ---
-gse_keep_awake_enable: yes
+gse_keep_awake_enable: false
 
 gse_keep_awake:
   name: KeepAwake@jepfa.de

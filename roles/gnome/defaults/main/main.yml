@@ -8,6 +8,7 @@ gnome_background_defaults:
   secondary-color: "'#2c001e'"
 
 gnome_extensions_defaults:
+  clipboard-indicator@tudmotu.com: "{{ gse_clipboard_indicator }}"
   dash-to-dock@micxgx.gmail.com: "{{ gse_dash_to_dock }}"
   dash-to-panel@jderose9.github.com: "{{ gse_dash_to_panel }}"
   dim-on-battery@nailfarmer.nailfarmer.com: "{{ gse_dim_on_battery }}"
