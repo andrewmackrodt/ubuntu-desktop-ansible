@@ -30,7 +30,6 @@ pin_to_dock:
   - { name: 'jetbrains-idea.desktop' }
   - { name: 'discord.desktop' }
   - { name: 'steam.desktop' }
-  - { name: 'jetbrains-idea.desktop' }
   - { name: 'spotify.desktop', fallback: [ 'rhythmbox.desktop' ] }
   - { name: 'smplayer.desktop', fallback: [ 'org.gnome.Totem.desktop' ] }
   - { name: 'gnome-control-center.desktop' }
