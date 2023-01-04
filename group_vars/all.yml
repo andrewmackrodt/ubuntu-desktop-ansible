@@ -7,6 +7,16 @@ timezone: Europe/London
 # gnome input
 gnome_input_source: gb
 
+# gnome wallpaper
+gnome_wallpapers:
+  - filename: Death Stranding.webp
+    url: https://q8ldea.am.files.1drv.com/y4mObTSJbFhhpQ2j02lxUTLolol7F_YW_uHqKMhlTVhq_eykK4U7kl9bMcgqzqLK1qD7Jd8MQTTApMuWpsIW6rfAu5IFTvbsh1ZbdB7uM3ntoYFGn7uNjeBEelbP0eIrzzY6lLQGeIQdReUtpnfndBGGzju7g7dmu0gIVBFQkMPQEE8tcAIAR84Etruhb7Hl68GxNdxXjby-0OSQcc6pr9qdA/Death%20Stranding.webp
+    sha256: 756df0814d917363626775e6436716e21a67e8796240dd5d096b474c859ff6b9
+
+gnome_background_defaults:
+  picture-uri: "'file://{{ ansible_user_dir }}/Pictures/Wallpapers/Death%20Stranding.webp'"
+  picture-uri-dark: "'file://{{ ansible_user_dir }}/Pictures/Wallpapers/Death%20Stranding.webp'"
+
 # gnome shell extensions
 gse_openweather_set_city: "'51.507351,-0.127758>London, United Kingdom>0'"
 
