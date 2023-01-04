@@ -13,7 +13,6 @@
       else
         curl -fsSL -o'{{ apt_key_temp_key.path }}' '{{ url }}'
       fi
-  check_mode: no
   changed_when: false
 
 - ansible.builtin.set_fact:

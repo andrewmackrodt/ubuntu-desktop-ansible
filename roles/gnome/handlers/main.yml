@@ -1,4 +1,4 @@
 ---
 - name: reload gnome-shell
   become: yes
-  ansible.builtin.shell: kill -s 2 $(ps -C gnome-shell -o pid | tail -n+2) && sleep 5
+  ansible.builtin.shell: echo "Please restart gnome-shell" # kill -s 2 $(ps -C gnome-shell -o pid | tail -n+2) && sleep 5
