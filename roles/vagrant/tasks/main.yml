@@ -37,7 +37,18 @@
     - vagrant-cachier
     - vagrant-disksize
     - vagrant-env
+    - vagrant-hostmanager
     - vagrant-libvirt
     - vagrant-vbguest
   register: res
   changed_when: res.stdout is search("ansible_changed=yes")
+
+- name: Configure vagrant passwordless sudo
+  become: yes
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/etc/sudoers.d/{{ item }}"
+    mode: 0440
+  with_items:
+    - vagrant-hostmanager
+    - vagrant-nfs
