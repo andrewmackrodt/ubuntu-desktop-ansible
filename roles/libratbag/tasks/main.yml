@@ -20,4 +20,4 @@
 
 - name: Enable ratbagd
   become: yes
-  ansible.builtin.systemd: name=ratbagd enabled=yes state=started
+  ansible.builtin.systemd: name=ratbagd enabled=yes

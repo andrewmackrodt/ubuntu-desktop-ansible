@@ -5,4 +5,4 @@
 
 - name: Execute tasks for Dell devices
   ansible.builtin.include_tasks: oem.yml
-  when: sys_vendor is search("Dell") or dell_force_role_enabled
+  when: not dell_force_role_disabled and ((sys_vendor | lower) is search("dell") or dell_force_role_enabled)

@@ -1,4 +1,5 @@
 ---
+asus_force_role_disabled: no
 asus_force_role_enabled: no
 asus_asusctl_repo: https://gitlab.com/asus-linux/asusctl.git
 asus_asusctl_version: 4.5.8
