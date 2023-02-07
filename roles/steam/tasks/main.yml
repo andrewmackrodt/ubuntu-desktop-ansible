@@ -12,7 +12,6 @@
 
 - name: Update apt cache
   ansible.builtin.shell: apt-get update -qqy
-  args: { warn: no }
   become: yes
   when: arch_i386.changed
 

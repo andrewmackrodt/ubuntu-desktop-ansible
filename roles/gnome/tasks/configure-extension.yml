@@ -16,6 +16,7 @@
     gnome-extensions {{ enable | mapaction }} "{{ name }}"
   register: res
   changed_when: res.stdout is search("ansible_changed=yes")
+  failed_when: false
 
 - name: Configure extension {{ name }}
   check_mode: no
