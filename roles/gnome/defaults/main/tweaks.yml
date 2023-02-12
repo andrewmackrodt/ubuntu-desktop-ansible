@@ -2,6 +2,7 @@
 gnome_interface_gtk_primary_paste: 'false'
 gnome_touchpad_click_method: "'fingers'"
 gnome_touchpad_disable_while_typing: 'false'
+gnome_mutter_attach_modal_dialogs: 'false'
 gnome_mutter_center_new_windows: 'true'
 
 gnome_tweaks_defaults:
@@ -17,4 +18,5 @@ gnome_tweaks_defaults:
   mutter:
     namespace: /org/gnome/mutter
     settings:
+      attach-modal-dialogs: "{{ gnome_mutter_attach_modal_dialogs }}"
       center-new-windows: "{{ gnome_mutter_center_new_windows }}"
