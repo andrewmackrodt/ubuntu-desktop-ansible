@@ -1,0 +1,67 @@
+#!/bin/bash
+echo -n "detecting installed version: "
+installed=$(dpkg -l | awk '$1 == "ii" && $2 == "discord" { print $3 }')
+if [[ "$installed" == "" ]]; then
+  echo "error"
+  exit 1
+fi
+echo "$installed"
+
+echo -n "detecting latest version: "
+url=$( \
+  curl --head 'https://discord.com/api/download?platform=linux&format=deb' 2>&1 \
+    | sed -nE 's#^location: (.+/discord-([^/]+)\.deb)#\1#ip' \
+    | sed -E 's/\r//g' \
+  )
+latest=$(echo "$url" | sed -nE 's#.+/discord-([^/]+)\.deb#\1#p')
+if [[ "$latest" == "" ]]; then
+  echo "error"
+  exit 2
+fi
+echo "$latest"
+
+echo -n "update required: "
+if [[ "$installed" == "$latest" ]]; then
+  echo "no"
+  exit 0
+fi
+echo "yes"
+
+if [[ " $* " =~ " -n " ]] || [[ " $* " =~ " --dry-run " ]]; then
+  exit 0
+fi
+
+file="/tmp/$(basename "$url")"
+echo "download location: $url"
+echo "download path: file://$file"
+
+echo -n "download path exists: "
+if [[ ! -f "$file" ]]; then
+  echo "no"
+  echo -n "download status: "
+  curl -fsSL -o "$file" "$url"
+  if [[ $? -ne 0 ]]; then
+    echo "error"
+    exit 3
+  fi
+  echo "ok"
+else
+  echo "yes"
+fi
+
+if [[ $(id -u) -eq 0 ]]; then
+  sudo=""
+else
+  sudo="sudo"
+fi
+
+echo "install required: yes"
+if ! $sudo apt install -qqy "$file"; then
+  echo "update successful: no"
+  exit 4
+fi
+echo "update successful: yes"
+
+if [[ -f "$file" ]]; then
+  rm "$file"
+fi
