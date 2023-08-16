@@ -3,5 +3,3 @@ asus_force_role_disabled: no
 asus_force_role_enabled: no
 asus_asusctl_repo: https://gitlab.com/asus-linux/asusctl.git
 asus_asusctl_version: 4.6.0
-asus_supergfxctl_repo: https://gitlab.com/asus-linux/supergfxctl.git
-asus_supergfxctl_version: 5.0.1
