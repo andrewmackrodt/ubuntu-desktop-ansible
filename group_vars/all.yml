@@ -9,8 +9,11 @@ gnome_input_source: gb
 
 # gnome wallpaper
 gnome_wallpapers:
+  - filename: Cyberpunk Edgerunners - Rebecca.jpg
+    url: https://8pkpka.am.files.1drv.com/y4mFqHRsTB5lhVX3Nk0xxNhYHIKyj7xKNtZr1Z4S_F-dym59AsiAsBHa4H1Kcwuo-v6WTgD2zcl6TPUXTVTRJ6VoiQdENGc7wYOyprQaZ7_fZ1p2ojHGU3RUsRHVvnV8mRUMAp53a8qyqaDA8wQsbuQnbkG0C2iavZLnYN1gbX1-cCMScE8vuYCVMru_duTFDbhYN1mzV40oaEoiKBLZD127w/Cyberpunk%20Edgerunners%20-%20Rebecca.jpg
+    sha256: 003a8077adac5656f4ffabf627857276d18dc1a1dddc5b7c2933489122397459
   - filename: Death Stranding.webp
-    url: https://q8ldea.am.files.1drv.com/y4mObTSJbFhhpQ2j02lxUTLolol7F_YW_uHqKMhlTVhq_eykK4U7kl9bMcgqzqLK1qD7Jd8MQTTApMuWpsIW6rfAu5IFTvbsh1ZbdB7uM3ntoYFGn7uNjeBEelbP0eIrzzY6lLQGeIQdReUtpnfndBGGzju7g7dmu0gIVBFQkMPQEE8tcAIAR84Etruhb7Hl68GxNdxXjby-0OSQcc6pr9qdA/Death%20Stranding.webp
+    url: https://q8lcea.am.files.1drv.com/y4m4eGDvYo74k5BrckkaHOl6I7dIxRg2kAx7LKWvQj164P7OWLsBxXyWLe7DVrhYYFwlC7JXKnDwngVGlmar903lUInNFP-53IZtqqOAv2sJxC4OXU_nmgP9rs4l7Cc3ZTSJSvNy97WAsMI16_-s_kBpdUuar4JIrBJYxkV5TvVR8Xan9rl7eQHyN8uLChMVf8hKJ43ytoYhOeFC2eC_bIVcw/Death%20Stranding.webp
     sha256: 756df0814d917363626775e6436716e21a67e8796240dd5d096b474c859ff6b9
 
 gnome_background_defaults:
