@@ -1,0 +1,8 @@
+---
+gse_alphabetical_app_grid_enable: yes
+
+gse_alphabetical_app_grid:
+  name: AlphabeticalAppGrid@stuarthayhurst
+  id: 4269
+  namespace: /org/gnome/shell/extensions/alphabetical-app-grid
+  enable: "{{ gse_alphabetical_app_grid_enable }}"

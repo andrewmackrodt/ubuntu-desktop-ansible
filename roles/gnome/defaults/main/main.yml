@@ -8,11 +8,13 @@ gnome_background_defaults:
   secondary-color: "'#2c001e'"
 
 gnome_extensions_defaults:
+  AlphabeticalAppGrid@stuarthayhurst: "{{ gse_alphabetical_app_grid }}"
   clipboard-indicator@tudmotu.com: "{{ gse_clipboard_indicator }}"
   dash-to-dock@micxgx.gmail.com: "{{ gse_dash_to_dock }}"
   dash-to-panel@jderose9.github.com: "{{ gse_dash_to_panel }}"
   dim-on-battery@nailfarmer.nailfarmer.com: "{{ gse_dim_on_battery }}"
   ding@rastersoft.com: "{{ gse_desktop_icons_ng }}"
+  drive-menu@gnome-shell-extensions.gcampax.github.com: "{{ gse_removable_drive_menu }}"
   easy_docker_containers@red.software.systems: "{{ gse_easy_docker_containers }}"
   freon@UshakovVasilii_Github.yahoo.com: "{{ gse_freon }}"
   just-perfection-desktop@just-perfection: "{{ gse_just_perfection }}"

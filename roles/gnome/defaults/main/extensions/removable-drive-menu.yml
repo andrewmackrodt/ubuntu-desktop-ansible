@@ -1,0 +1,8 @@
+---
+gse_removable_drive_menu_enable: yes
+
+gse_removable_drive_menu:
+  name: drive-menu@gnome-shell-extensions.gcampax.github.com
+  id: 7
+  namespace: /org/gnome/shell/extensions/drive-menu
+  enable: "{{ gse_removable_drive_menu_enable }}"
