@@ -30,13 +30,14 @@
     path: "/usr/local/src/nvidia-vaapi-driver/{{ item }}"
     state: directory
     owner: root
-    group: adm
+    group: root
     mode: "2775"
   with_items:
     - build
     - subprojects
 
 - name: "nvidia-vaapi-driver : meson setup build"
+  become: yes
   args: { chdir: /usr/local/src/nvidia-vaapi-driver }
   ansible.builtin.shell: meson setup build
   register: res
