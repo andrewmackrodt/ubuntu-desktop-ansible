@@ -3,9 +3,9 @@ echo -n "detecting installed version: "
 installed=$(dpkg -l | awk '$1 == "ii" && $2 == "discord" { print $3 }')
 if [[ "$installed" == "" ]]; then
   echo "error"
-  exit 1
+else
+  echo "$installed"
 fi
-echo "$installed"
 
 echo -n "detecting latest version: "
 url=$( \
