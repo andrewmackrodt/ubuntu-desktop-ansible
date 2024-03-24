@@ -30,7 +30,7 @@ pin_to_dock:
   - { name: 'microsoft-edge.desktop' }
   - { name: 'org.gnome.Terminal.desktop' }
   - { name: 'code.desktop', fallback: [ 'org.gnome.gedit.desktop' ] }
-  - { name: 'jetbrains-idea.desktop' }
+  - { name: 'jetbrains-idea*.desktop' }
   - { name: 'discord.desktop' }
   - { name: 'steam.desktop' }
   - { name: 'spotify.desktop', fallback: [ 'rhythmbox.desktop' ] }

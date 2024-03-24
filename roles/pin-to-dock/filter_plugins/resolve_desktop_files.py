@@ -1,15 +1,29 @@
+import re
+
+
+def find_in_list(pattern, search):
+    pattern = pattern.replace('.', '\\.').replace('*', '.*')
+    for compare in search:
+        if re.match(fr'^{pattern}$', compare):
+            return compare
+    return None
+
+
 def resolve_desktop_files(apps, available):
     res = []
     for app in apps:
-        if app['name'] in available:
-            res.append(app['name'])
+        name = app['name'].replace('*', '')
+        item = find_in_list(app['name'], available)
+        if item:
+            res.append(item)
         elif 'fallback' in app and len(app['fallback']):
-            for item in app['fallback']:
-                if item in available:
+            for fallback in app['fallback']:
+                item = find_in_list(fallback, available)
+                if item:
                     res.append(item)
                     break
         else:
-            res.append(app['name'])
+            res.append(name)
     return res
 
 
