@@ -15,4 +15,6 @@
   changed_when: res.stdout is not search("unchanged")
   failed_when: res.rc != 0 and not ansible_check_mode
 
+- ansible.builtin.include_tasks: supergfxctl.yml
+
 - ansible.builtin.include_tasks: asusctl.yml
