@@ -23,7 +23,6 @@
     - { role: github-cli, tags: [ github, git, desktop ] }
     - { role: fusuma, tags: [ fusuma, desktop ] }
     - { role: discord, tags: [ discord, desktop ] }
-    - { role: ms-teams, tags: [ teams, desktop ] }
     # virtualization
     - { role: docker, tags: [ docker, virtualization ] }
     - { role: virtualbox, tags: [ virtualbox, virtualization ] }
