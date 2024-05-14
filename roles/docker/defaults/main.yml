@@ -4,3 +4,9 @@ docker_apt_key_dearmor: yes
 docker_apt_key_name: docker.gpg
 docker_apt_name: docker
 docker_apt_pkg: docker-ce
+
+nvidia_container_toolkit_apt_key_url: https://nvidia.github.io/libnvidia-container/gpgkey
+nvidia_container_toolkit_apt_key_dearmor: yes
+nvidia_container_toolkit_apt_key_name: nvidia-container-toolkit-keyring.gpg
+nvidia_container_toolkit_apt_name: nvidia-container-toolkit
+nvidia_container_toolkit_apt_pkg: nvidia-container-toolkit

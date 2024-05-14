@@ -22,5 +22,9 @@
     state: present
     cache_valid_time: 3600
 
-# todo configure /etc/docker/daemon.json - "userland-proxy": false
-# todo detect/install nvidia-docker2, nvidia-container-toolkit
+- name: Register nvidia card present
+  stat: path=/dev/nvidia0
+  register: dev_nvidia
+
+- ansible.builtin.include_tasks: nvidia.yml
+  when: dev_nvidia.stat.exists

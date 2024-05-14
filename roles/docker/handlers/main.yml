@@ -1,0 +1,4 @@
+---
+- name: reload docker
+  become: yes
+  ansible.builtin.service: name=docker state=reloaded
