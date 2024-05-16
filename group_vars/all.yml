@@ -9,16 +9,16 @@ gnome_input_source: gb
 
 # gnome wallpaper
 gnome_wallpapers:
-  - filename: Cyberpunk Edgerunners - Rebecca.jpg
-    url: https://8pkpka.am.files.1drv.com/y4mFqHRsTB5lhVX3Nk0xxNhYHIKyj7xKNtZr1Z4S_F-dym59AsiAsBHa4H1Kcwuo-v6WTgD2zcl6TPUXTVTRJ6VoiQdENGc7wYOyprQaZ7_fZ1p2ojHGU3RUsRHVvnV8mRUMAp53a8qyqaDA8wQsbuQnbkG0C2iavZLnYN1gbX1-cCMScE8vuYCVMru_duTFDbhYN1mzV40oaEoiKBLZD127w/Cyberpunk%20Edgerunners%20-%20Rebecca.jpg
-    sha256: 003a8077adac5656f4ffabf627857276d18dc1a1dddc5b7c2933489122397459
   - filename: Death Stranding.webp
-    url: https://q8lcea.am.files.1drv.com/y4m4eGDvYo74k5BrckkaHOl6I7dIxRg2kAx7LKWvQj164P7OWLsBxXyWLe7DVrhYYFwlC7JXKnDwngVGlmar903lUInNFP-53IZtqqOAv2sJxC4OXU_nmgP9rs4l7Cc3ZTSJSvNy97WAsMI16_-s_kBpdUuar4JIrBJYxkV5TvVR8Xan9rl7eQHyN8uLChMVf8hKJ43ytoYhOeFC2eC_bIVcw/Death%20Stranding.webp
+    url: https://q8lcea.am.files.1drv.com/y4m4eGDvYo74k5BrckkaHOl6I7dIxRg2kAx7LKWvQj164P7OWLsBxXyWLe7DVrhYYFwlC7JXKnDwngVGlmar903lUInNFP-53IZtqqOAv2sJxC4OXU_nmgP9rs4l7Cc3ZTSJSvNy97WAsMI16_-s_kBpdUuar4JIrBJYxkV5TvVR8Xan9rl7eQHyN8uLChMVf8hKJ43ytoYhOeFC2eC_bIVcw/Neon%20City.jpg
     sha256: 756df0814d917363626775e6436716e21a67e8796240dd5d096b474c859ff6b9
+  - filename: Neon City.jpg
+    url: https://7pmtpg.db.files.1drv.com/y4mFRRsw3EIVJzzew1yjzbjRsdyjW3aitrEUgFN4UvWSCylcxN0Hir8uGiq4z_ixgVxjGzKAftQXl7rbskiHq2ZKeiMm3UlkcxJQ6eBTNfIHDW2RG6MrTtITJ6QnfemOexkp8GGzGKQV9B0d9RBA0PWJL4zl-3TL2vD2_EgtyCEKc50CE8KZKJTxq7-PPWHwtEPW8hz7f1rTXt-TfZMQZB8LA/Neon%20City.jpg
+    sha256: 9a99a4549cea3ed70d028fd1e29b16e52adc2a4d4018cf00ea447b3039cede4c
 
 gnome_background_defaults:
-  picture-uri: "'file://{{ ansible_user_dir }}/Pictures/Wallpapers/Death%20Stranding.webp'"
-  picture-uri-dark: "'file://{{ ansible_user_dir }}/Pictures/Wallpapers/Death%20Stranding.webp'"
+  picture-uri: "'file://{{ ansible_user_dir }}/Pictures/Wallpapers/Neon%20City.jpg'"
+  picture-uri-dark: "'file://{{ ansible_user_dir }}/Pictures/Wallpapers/Neon%20City.jpg'"
 
 # gnome shell extensions
 gse_openweather_set_city: "'51.507351,-0.127758>London, United Kingdom>0'"

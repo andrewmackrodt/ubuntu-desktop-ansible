@@ -2,7 +2,7 @@
 gse_dash_to_dock_enable: yes
 gse_dash_to_dock_set_animate_show_apps: 'true'
 gse_dash_to_dock_set_apply_custom_theme: 'false'
-gse_dash_to_dock_set_background_opacity: '0.80000000000000004'
+gse_dash_to_dock_set_background_opacity: '0.93999999999999995'
 gse_dash_to_dock_set_click_action: "'minimize-or-previews'"
 gse_dash_to_dock_set_custom_theme_shrink: 'true'
 gse_dash_to_dock_set_dash_max_icon_size: '48'
