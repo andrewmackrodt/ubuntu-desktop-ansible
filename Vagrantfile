@@ -1,5 +1,10 @@
 # load the .env file to add user overrides
-if File.exists?(File.join(File.dirname(__FILE__), '.env'))
+if File.exist?(File.join(File.dirname(__FILE__), '.env'))
+  # ruby 3.2.0 compatibility
+  class << File
+    alias_method :exists?, :exist?
+  end
+
   begin
     require 'dotenv'
 
