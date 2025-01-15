@@ -1,4 +1,4 @@
-# Ubuntu 22.04 Desktop Ansible Provisioner
+# Ubuntu 24.04 Desktop Ansible Provisioner
 
 ## Requirements
 

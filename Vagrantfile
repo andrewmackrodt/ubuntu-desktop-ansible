@@ -22,7 +22,7 @@ Install it via "vagrant plugin" or "gem":
 end
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'generic/ubuntu2204'
+  config.vm.box = 'bento/ubuntu-24.04'
 
   # detect the host platform and retrieve system resources to allow sane
   # defaults without exceeding the machine specification; the detected
@@ -102,7 +102,7 @@ Vagrant.configure('2') do |config|
       DISK=$(lvs --segments "$MAPPER" -o devices | awk '$1 ~ "/dev" { print $1 }' | head -n1 | sed -E 's/\(.+//')
       DEVICE=$(echo "$DISK" | sed -E 's/p?[0-9]+$//')
       PARTITION=$(echo "$DISK" | sed -nE 's/.*([0-9]+)$/\1/p')
-      parted "$DEVICE" resizepart "$PARTITION" 100%
+      parted -s -f "$DEVICE" resizepart "$PARTITION" 100%
       pvresize "$DISK"
       lvextend -l +100%FREE "$MAPPER"
       resize2fs "$MAPPER"
@@ -118,7 +118,13 @@ Vagrant.configure('2') do |config|
     #!/bin/bash
     set -euo pipefail
 
-    # add default groups when installing from ubuntu-desktop iso
+    # remove cloud-init
+    apt remove -qqy --autoremove --purge cloud-init
+
+    # disable wait for network online
+    systemctl disable --now systemd-networkd-wait-online
+
+    # add default groups from ubuntu-desktop iso
     for group in adm cdrom sudo dip plugdev; do
       adduser vagrant "$group"
     done
@@ -126,10 +132,8 @@ Vagrant.configure('2') do |config|
     # install ubuntu-desktop
     export DEBIAN_FRONTEND=noninteractive
     apt update -qqy
+    apt upgrade -qqy
     apt install -qqy ubuntu-desktop language-pack-gnome-en
-
-    # install firefox
-    sudo snap install firefox
 
     # force Xorg login screen
     sed -i -E 's/^#(WaylandEnable=false)/\1/' /etc/gdm3/custom.conf

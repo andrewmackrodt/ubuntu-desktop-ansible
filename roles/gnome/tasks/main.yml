@@ -11,6 +11,7 @@
     [[ "{{ ansible_check_mode }}" != "True" ]] || exit 0
     localectl --no-convert set-x11-keymap "{{ gnome_input_source }}"
   register: set_keymap
+  when: ansible_distribution_major_version == "22"
   changed_when: set_keymap.stdout is search("ansible_changed=yes")
 
 - name: Map gnome input source
@@ -49,12 +50,13 @@
 - ansible.builtin.include_tasks: terminal.yml
 
 - ansible.builtin.include_tasks: nautilus.yml
+  when: ansible_distribution_major_version == "22"
 
 - name: Update dock pinned apps
   ansible.builtin.include_role: name=pin-to-dock
 
 - name: Create desktop wallpapers directory
-  file: path="{{ ansible_user_dir }}/Pictures/Wallpapers" state=directory
+  ansible.builtin.file: path="{{ ansible_user_dir }}/Pictures/Wallpapers" state=directory
 
 - name: Download wallpapers
   ansible.builtin.get_url:

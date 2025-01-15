@@ -3,7 +3,7 @@
     name: apt-key
     apply: { tags: [ always ] }
   vars:
-    source: "deb https://apt.releases.hashicorp.com jammy main"
+    source: "deb https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     name: "{{ vagrant_apt_name }}"
     keyname: "{{ vagrant_apt_key_name }}"
     url: "{{ vagrant_apt_key_url }}"
